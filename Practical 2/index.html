@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Online Shopping Billing Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h2>Online Shopping Billing Calculator</h2>
+
+    <label>Customer Name:</label><br>
+    <input type="text" id="customerName"><br><br>
+
+    <label>Product Name:</label><br>
+    <input type="text" id="productName"><br><br>
+
+    <label>Product Price (₹):</label><br>
+    <input type="number" id="price"><br><br>
+
+    <label>Quantity:</label><br>
+    <input type="number" id="qty"><br><br>
+
+    <label>Discount (%):</label><br>
+    <input type="number" id="discount"><br><br>
+
+    <label>GST (%):</label><br>
+    <input type="number" id="gst"><br><br>
+
+    <label>Shipping Charges (₹):</label><br>
+    <input type="number" id="shipping"><br><br>
+
+    <label>Coupon Discount (₹):</label><br>
+    <input type="number" id="coupon"><br><br>
+
+    <label>Payment Method:</label><br>
+    <select id="paymentMethod">
+        <option>UPI</option>
+        <option>Credit Card</option>
+        <option>Debit Card</option>
+        <option>Cash on Delivery</option>
+        <option>Net Banking</option>
+    </select><br><br>
+
+    <button onclick="calculateBill()">Calculate Bill</button>
+
+    <hr>
+
+    <h3>Bill Summary</h3>
+    <label>Omkar Pant</label>
+    <label>25070521515</label>
+
+    <p id="customer"></p>
+    <p id="product"></p>
+    <p id="subtotal"></p>
+    <p id="discountAmount"></p>
+    <p id="couponAmount"></p>
+    <p id="taxable"></p>
+    <p id="gstAmount"></p>
+    <p id="shippingDisplay"></p>
+    <p id="payment"></p>
+    <h3 id="finalTotal"></h3>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

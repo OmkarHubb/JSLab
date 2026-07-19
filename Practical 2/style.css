@@ -1,0 +1,47 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: beige;
+    margin: 40px;
+}
+
+h2 {
+    color: darkblue;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+    color: black;
+}
+
+input {
+    width: 200px;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkblue;
+}
+
+hr {
+    margin-top: 20px;
+}
+
+h3 {
+    color: black;
+    margin-top: 20px;
+}
+
+p {
+    font-size: 18px;
+}
