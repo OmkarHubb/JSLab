@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Registration Validator</title>
+    <meta name="description" content="Validate Indian vehicle registration numbers with a beautiful interactive UI.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(140deg, #fdf4ff, #ecfdf5, #fff7ed, #f0f9ff);
+            background-size: 400% 400%;
+            animation: bgDrift 16s ease infinite;
+            color: #1e293b;
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+        }
+
+        @keyframes bgDrift {
+            0%   { background-position: 0% 50%; }
+            33%  { background-position: 100% 0%; }
+            66%  { background-position: 50% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Decorative blobs */
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.45;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .blob-1 {
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, #14b8a6, transparent 70%);
+            top: -12%;
+            left: -8%;
+            animation: blobMove1 12s ease-in-out infinite alternate;
+        }
+
+        .blob-2 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #f97316, transparent 70%);
+            bottom: -10%;
+            right: -6%;
+            animation: blobMove2 14s ease-in-out infinite alternate;
+        }
+
+        .blob-3 {
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, #a78bfa, transparent 70%);
+            top: 60%;
+            left: 50%;
+            animation: blobMove3 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes blobMove1 { to { transform: translate(70px, 90px) scale(1.12); } }
+        @keyframes blobMove2 { to { transform: translate(-60px, -70px) scale(1.18); } }
+        @keyframes blobMove3 { to { transform: translate(-80px, -40px) scale(0.85); } }
+
+        /* Main card */
+        .container {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.68);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            border-radius: 28px;
+            box-shadow: 0 28px 60px -16px rgba(0, 0, 0, 0.1),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            padding: 48px 42px 42px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            animation: cardSlide 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(40px) scale(0.97);
+        }
+
+        @keyframes cardSlide {
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Header */
+        .header-badge {
+            width: 68px;
+            height: 68px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #14b8a6, #0d9488, #0f766e);
+            box-shadow: 0 12px 28px -6px rgba(20, 184, 166, 0.45);
+            font-size: 1.8rem;
+            animation: badgeBounce 3s ease-in-out infinite;
+        }
+
+        @keyframes badgeBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(3deg); }
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0d9488, #f97316, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+
+        p.desc {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        /* Format example badge */
+        .format-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.08), rgba(249, 115, 22, 0.06));
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #0d9488;
+            letter-spacing: 0.5px;
+            margin-bottom: 30px;
+        }
+
+        /* Number plate visualization */
+        .plate-preview {
+            background: linear-gradient(135deg, #fefce8, #fef9c3);
+            border: 3px solid #1e293b;
+            border-radius: 12px;
+            padding: 16px 24px;
+            margin-bottom: 28px;
+            min-height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.1),
+                        inset 0 2px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .plate-preview::before,
+        .plate-preview::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #334155;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.3);
+        }
+
+        .plate-preview::before { left: 10px; }
+        .plate-preview::after { right: 10px; }
+
+        .plate-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: #1e293b;
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .plate-text.empty {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #94a3b8;
+            letter-spacing: 1px;
+        }
+
+        .plate-preview.valid {
+            border-color: #059669;
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+        }
+
+        .plate-preview.invalid {
+            border-color: #dc2626;
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 8px;
+        }
+
+        .label-icon { font-size: 1rem; }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1.5px solid #e2e8f0;
+            border-radius: 14px;
+            font-size: 1.05rem;
+            font-family: 'Outfit', sans-serif;
+            color: #1e293b;
+            outline: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        input[type="text"]:focus {
+            border-color: #14b8a6;
+            box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.12);
+            background: #fff;
+        }
+
+        input[type="text"]::placeholder {
+            color: #94a3b8;
+            text-transform: none;
+            letter-spacing: 1px;
+        }
+
+        /* Segment breakdown */
+        .segments {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 24px;
+            min-height: 62px;
+        }
+
+        .segment {
+            padding: 8px 6px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1.5px solid #e2e8f0;
+            text-align: center;
+            animation: segPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        @keyframes segPop {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .segment .seg-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #94a3b8;
+            margin-bottom: 4px;
+        }
+
+        .segment .seg-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #334155;
+            letter-spacing: 1px;
+        }
+
+        .segment.highlight-teal {
+            border-color: #5eead4;
+            background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+        }
+        .segment.highlight-teal .seg-label { color: #0d9488; }
+
+        .segment.highlight-orange {
+            border-color: #fed7aa;
+            background: linear-gradient(135deg, #fff7ed, #ffedd5);
+        }
+        .segment.highlight-orange .seg-label { color: #ea580c; }
+
+        .segment.highlight-violet {
+            border-color: #c4b5fd;
+            background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+        }
+        .segment.highlight-violet .seg-label { color: #7c3aed; }
+
+        .segment.highlight-rose {
+            border-color: #fecdd3;
+            background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+        }
+        .segment.highlight-rose .seg-label { color: #e11d48; }
+
+        /* Button */
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px 0;
+            background: linear-gradient(135deg, #14b8a6, #0d9488, #0f766e);
+            background-size: 200% 200%;
+            animation: btnGlow 4s ease infinite;
+            color: #fff;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.08rem;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px -8px rgba(20, 184, 166, 0.5);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.3px;
+        }
+
+        @keyframes btnGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .btn-shine {
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transition: left 0.6s ease;
+        }
+
+        button:hover .btn-shine { left: 100%; }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 36px -6px rgba(20, 184, 166, 0.6);
+        }
+
+        button:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* Result */
+        .result {
+            margin-top: 24px;
+            padding: 18px 20px;
+            border-radius: 16px;
+            display: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-align: center;
+            animation: resultPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes resultPop {
+            from { opacity: 0; transform: translateY(10px) scale(0.95); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .result .result-emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .result.success {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(20, 184, 166, 0.06));
+            color: #059669;
+            border: 1.5px solid rgba(16, 185, 129, 0.3);
+            box-shadow: 0 8px 24px -8px rgba(16, 185, 129, 0.12);
+            display: block;
+        }
+
+        .result.error {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.06), rgba(249, 115, 22, 0.04));
+            color: #dc2626;
+            border: 1.5px solid rgba(239, 68, 68, 0.25);
+            box-shadow: 0 8px 24px -8px rgba(239, 68, 68, 0.1);
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 520px) {
+            .container { padding: 36px 22px 32px; }
+            h2 { font-size: 1.45rem; }
+            .plate-text { font-size: 1.3rem; letter-spacing: 3px; }
+            .segments { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header-badge">🚗</div>
+        <h2>Vehicle Registration Validator</h2>
+        <p class="desc">Validate Indian vehicle registration numbers</p>
+        <div class="format-badge">📋 Format: MH 12 AB 1234</div>
+
+        <!-- Number plate preview -->
+        <div class="plate-preview" id="platePreview">
+            <span class="plate-text empty" id="plateText">Type to preview</span>
+        </div>
+
+        <!-- Form -->
+        <div class="form-group">
+            <label>
+                <span class="label-icon">🔢</span> Registration Number
+            </label>
+            <input type="text" id="regNumber" placeholder="e.g. MH 12 AB 1234" oninput="updatePlatePreview()" />
+        </div>
+
+        <!-- Segment breakdown -->
+        <div class="segments" id="segments"></div>
+
+        <button onclick="validateVehicle()">
+            <span>Validate Registration</span>
+            <span class="btn-shine"></span>
+        </button>
+
+        <div id="regResult" class="result"></div>
+    </div>
+
+    <script src="script_f.js"></script>
+    <script>
+        // Live number plate preview
+        function updatePlatePreview() {
+            const input = document.getElementById('regNumber').value.trim().toUpperCase();
+            const plateText = document.getElementById('plateText');
+            const platePreview = document.getElementById('platePreview');
+            const segmentsDiv = document.getElementById('segments');
+
+            // Reset plate state
+            platePreview.classList.remove('valid', 'invalid');
+
+            if (!input) {
+                plateText.textContent = 'Type to preview';
+                plateText.classList.add('empty');
+                segmentsDiv.innerHTML = '';
+                return;
+            }
+
+            plateText.textContent = input;
+            plateText.classList.remove('empty');
+
+            // Try to parse segments
+            const parts = input.split(' ');
+            if (parts.length >= 2) {
+                const colors = ['highlight-teal', 'highlight-orange', 'highlight-violet', 'highlight-rose'];
+                const labels = ['State', 'District', 'Series', 'Number'];
+                let html = '';
+                for (let i = 0; i < Math.min(parts.length, 4); i++) {
+                    html += `
+                        <div class="segment ${colors[i]}" style="animation-delay: ${i * 80}ms">
+                            <div class="seg-label">${labels[i]}</div>
+                            <div class="seg-value">${parts[i]}</div>
+                        </div>
+                    `;
+                }
+                segmentsDiv.innerHTML = html;
+            } else {
+                segmentsDiv.innerHTML = '';
+            }
+        }
+
+        // Override validate to add plate coloring & emoji result
+        const _origValidate = validateVehicle;
+        validateVehicle = function () {
+            _origValidate();
+
+            const resultDiv = document.getElementById('regResult');
+            const platePreview = document.getElementById('platePreview');
+            const text = resultDiv.innerText;
+
+            platePreview.classList.remove('valid', 'invalid');
+
+            if (text === 'Valid Registration Number') {
+                platePreview.classList.add('valid');
+                resultDiv.innerHTML = `<span class="result-emoji">✅</span> Valid Registration Number`;
+                resultDiv.className = 'result success';
+            } else {
+                platePreview.classList.add('invalid');
+                resultDiv.innerHTML = `<span class="result-emoji">⚠️</span> ${text}`;
+                resultDiv.className = 'result error';
+            }
+        };
+    </script>
+</body>
+</html>
