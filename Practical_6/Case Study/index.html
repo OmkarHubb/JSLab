@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Practical 6 Case Study — Text Analysis via Regular Expressions">
+    <title>REG/EX — Pattern Extraction Machine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- CRT overlay -->
+    <div class="crt-overlay" aria-hidden="true"></div>
+    <!-- Grid overlay -->
+    <div class="grid-overlay" aria-hidden="true"></div>
+
+    <!-- ============ MACHINE FRAME ============ -->
+    <div class="machine-frame">
+
+        <!-- TOP BAR — status strip -->
+        <div class="status-strip">
+            <span class="strip-label">SYS::REGEX_ENGINE</span>
+            <span class="strip-divider">|</span>
+            <span class="strip-label">PRAC.06 — CASE STUDY</span>
+            <span class="strip-divider">|</span>
+            <span class="strip-label blink">● ONLINE</span>
+            <span class="strip-spacer"></span>
+            <span class="strip-label" id="clockDisplay">00:00:00</span>
+        </div>
+
+        <!-- ============ MAIN GRID ============ -->
+        <main class="main-grid">
+
+            <!-- LEFT COLUMN — INPUT PANEL -->
+            <section class="panel input-panel">
+                <div class="panel-header">
+                    <span class="panel-id">PANEL—A</span>
+                    <span class="panel-label">DATA INPUT TERMINAL</span>
+                    <span class="panel-indicator"></span>
+                </div>
+                <div class="panel-body">
+                    <label for="inputParagraph" class="field-label">
+                        <span class="field-tag">TXT_IN</span> RAW PARAGRAPH
+                    </label>
+                    <textarea id="inputParagraph" rows="10"
+                        placeholder="Feed paragraph containing: student name, roll number, email address, phone number, department..."></textarea>
+                    <div class="control-row">
+                        <button id="loadSampleBtn" class="mech-btn" type="button">
+                            <span class="btn-dot"></span> LOAD SAMPLE
+                        </button>
+                        <button id="analyzeBtn" class="mech-btn primary" type="button">
+                            EXECUTE ▸
+                        </button>
+                        <button id="clearBtn" class="mech-btn ghost" type="button">
+                            PURGE
+                        </button>
+                    </div>
+                    <div class="input-meta">
+                        <span class="meta-item">CHARS: <span id="charCount">0</span></span>
+                        <span class="meta-divider">/</span>
+                        <span class="meta-item">LINES: <span id="lineCount">0</span></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RIGHT COLUMN — EXTRACTED DATA -->
+            <section class="panel output-panel" id="resultsSection" style="display:none;">
+                <div class="panel-header">
+                    <span class="panel-id">PANEL—B</span>
+                    <span class="panel-label">EXTRACTED DATA READOUT</span>
+                    <span class="panel-indicator active"></span>
+                </div>
+                <div class="panel-body">
+                    <div class="readout-grid" id="extractedInfo">
+                        <!-- JS injects readout items here -->
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- ============ LOWER MODULES ============ -->
+        <div class="lower-modules" id="lowerModules" style="display:none;">
+
+            <!-- VALIDATION MODULE -->
+            <div class="module-row">
+                <section class="panel module-panel validation-module">
+                    <div class="panel-header">
+                        <span class="panel-id">MOD—V1</span>
+                        <span class="panel-label">EMAIL VALIDATION</span>
+                    </div>
+                    <div class="panel-body">
+                        <div id="emailValidation" class="gauge-readout"></div>
+                    </div>
+                </section>
+
+                <section class="panel module-panel validation-module">
+                    <div class="panel-header">
+                        <span class="panel-id">MOD—V2</span>
+                        <span class="panel-label">PHONE VALIDATION</span>
+                    </div>
+                    <div class="panel-body">
+                        <div id="phoneValidation" class="gauge-readout"></div>
+                    </div>
+                </section>
+
+                <section class="panel module-panel stats-module">
+                    <div class="panel-header">
+                        <span class="panel-id">MOD—S1</span>
+                        <span class="panel-label">TEXT METRICS</span>
+                    </div>
+                    <div class="panel-body">
+                        <div id="textStats" class="stats-bank"></div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- TRANSFORM MODULE -->
+            <div class="module-row">
+                <section class="panel module-panel wide-module">
+                    <div class="panel-header">
+                        <span class="panel-id">MOD—T1</span>
+                        <span class="panel-label">LOWERCASE TRANSFORM</span>
+                    </div>
+                    <div class="panel-body">
+                        <pre class="tape-output" id="lowercaseText"></pre>
+                    </div>
+                </section>
+
+                <section class="panel module-panel wide-module">
+                    <div class="panel-header">
+                        <span class="panel-id">MOD—T2</span>
+                        <span class="panel-label">DEPT. REPLACEMENT — CS → IT</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="replacement-tag" aria-hidden="true">
+                            s/Computer Science/Information Technology/gi
+                        </div>
+                        <pre class="tape-output" id="replacedText"></pre>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+
+        <!-- BOTTOM BAR -->
+        <div class="status-strip bottom-strip">
+            <span class="strip-label">REGEX ENGINE v6.0</span>
+            <span class="strip-divider">|</span>
+            <span class="strip-label" id="statusMsg">AWAITING INPUT...</span>
+            <span class="strip-spacer"></span>
+            <span class="strip-label">JS PRACTICALS — SEM V</span>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rakhee Threads 🪢 — Your Fav Online Rakhi Store!</title>
+  <meta name="description" content="The most fun place to shop Rakhis online! Handcrafted Rakhis, gift hampers, spin-the-wheel discounts & free delivery. 🎉" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Confetti Canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Floating Emoji Background -->
+  <div class="emoji-bg" id="emojiBg"></div>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <span class="nav-logo-icon">🪢</span>
+        Rakhee Threads
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home 🏠</a></li>
+        <li><a href="#categories">Categories 🎨</a></li>
+        <li><a href="#products">Shop 🛍️</a></li>
+        <li><a href="#spin">Win Prizes 🎰</a></li>
+        <li><a href="#testimonials">Love Notes 💌</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="nav-cart" id="navCart" title="View Cart" onclick="shakeCart()">
+          🛒
+          <span class="cart-count" id="cartCount">0</span>
+        </div>
+        <button class="btn-nav btn-nav-primary" onclick="scrollToSection('products')">Shop Now 🔥</button>
+      </div>
+
+      <div class="nav-toggle" id="navToggle" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero" id="home">
+    <div class="hero-blob one"></div>
+    <div class="hero-blob two"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-tag" onclick="fireConfetti()">
+          🎊 Raksha Bandhan 2026 is HERE! Tap me! 🎊
+        </div>
+
+        <h1 class="hero-title">
+          The thread that says <span class="highlight">"I got your back, bro!"</span>
+        </h1>
+
+        <p class="hero-scribble">~ because siblings are the OG squad 💪</p>
+
+        <p class="hero-description">
+          Forget boring rakhis your mom picks from the local market. 
+          We've got <strong>500+ fire designs</strong> that'll make your brother actually 
+          want to wear it. No cap. 🔥
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn btn-primary" onclick="scrollToSection('products')">
+            Let's Go Shopping 🛍️
+          </button>
+          <button class="btn btn-outline" onclick="scrollToSection('spin')">
+            Spin to Win! 🎰
+          </button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-emoji">🪢</div>
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Fire Designs</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-emoji">😍</div>
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Happy Sisters</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-emoji">⭐</div>
+            <div class="stat-number">4.9</div>
+            <div class="stat-label">Avg Rating</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-wrapper">
+        <img src="images/rakhi_hero.png" alt="Beautiful collection of handcrafted Rakhis" class="hero-image" />
+        <div class="hero-sticker one">
+          <span>🚚</span> Free Delivery — Pinky Promise!
+        </div>
+        <div class="hero-sticker two">
+          <span>🎁</span> Gift-Wrapped with Extra Love
+        </div>
+        <div class="hero-sticker three">
+          <span>🤑</span> Under ₹199 Deals!
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MARQUEE BANNER ========== -->
+  <section class="marquee-banner">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="emoji">🚀</span> Free Delivery on ₹499+</span>
+      <span class="marquee-item"><span class="emoji">🎁</span> Gift Wrapping — Always Free!</span>
+      <span class="marquee-item"><span class="emoji">💯</span> 100% Handcrafted with Love</span>
+      <span class="marquee-item"><span class="emoji">🔄</span> Easy Returns — No Drama!</span>
+      <span class="marquee-item"><span class="emoji">🛡️</span> Secure Payments — Chill!</span>
+      <span class="marquee-item"><span class="emoji">⚡</span> Same Day Dispatch</span>
+      <span class="marquee-item"><span class="emoji">🇮🇳</span> Made in India with Pride</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="marquee-item"><span class="emoji">🚀</span> Free Delivery on ₹499+</span>
+      <span class="marquee-item"><span class="emoji">🎁</span> Gift Wrapping — Always Free!</span>
+      <span class="marquee-item"><span class="emoji">💯</span> 100% Handcrafted with Love</span>
+      <span class="marquee-item"><span class="emoji">🔄</span> Easy Returns — No Drama!</span>
+      <span class="marquee-item"><span class="emoji">🛡️</span> Secure Payments — Chill!</span>
+      <span class="marquee-item"><span class="emoji">⚡</span> Same Day Dispatch</span>
+      <span class="marquee-item"><span class="emoji">🇮🇳</span> Made in India with Pride</span>
+    </div>
+  </section>
+
+  <!-- ========== COUNTDOWN TIMER ========== -->
+  <section class="countdown-section reveal">
+    <div class="container">
+      <span class="section-badge">⏰ HURRY UP!</span>
+      <h2 class="section-title">Raksha Bandhan is Coming! 🎉</h2>
+      <p class="section-subtitle">
+        Don't be that sibling who orders last minute. You know who you are. 👀
+      </p>
+      <div class="countdown-wrapper">
+        <div class="countdown-card">
+          <div class="countdown-emoji">📅</div>
+          <div class="countdown-number" id="countDays">00</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-card">
+          <div class="countdown-emoji">⏰</div>
+          <div class="countdown-number" id="countHours">00</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-card">
+          <div class="countdown-emoji">⏳</div>
+          <div class="countdown-number" id="countMins">00</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-card">
+          <div class="countdown-emoji">💨</div>
+          <div class="countdown-number" id="countSecs">00</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CATEGORIES ========== -->
+  <section class="categories" id="categories">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-badge">🎨 PICK YOUR VIBE</span>
+        <h2 class="section-title">What's Your Rakhi Aesthetic?</h2>
+        <p class="section-subtitle">
+          Whether your bro is into classic vibes or he's a full-on minimalist — we've got the perfect match. 💅
+        </p>
+      </div>
+      <div class="categories-grid">
+        <div class="category-card reveal" onclick="filterProducts('traditional')">
+          <img src="images/rakhi_traditional.png" alt="Traditional Rakhis" />
+          <div class="category-info">
+            <span class="category-emoji">👑</span>
+            <div class="category-name">Traditional</div>
+            <div class="category-count">120+ Designs</div>
+          </div>
+          <span class="category-fun-tag" style="color: var(--saffron);">OG Vibes ✨</span>
+        </div>
+        <div class="category-card reveal" onclick="filterProducts('premium')">
+          <img src="images/rakhi_premium.png" alt="Premium Rakhis" />
+          <div class="category-info">
+            <span class="category-emoji">💎</span>
+            <div class="category-name">Premium</div>
+            <div class="category-count">85+ Designs</div>
+          </div>
+          <span class="category-fun-tag" style="color: var(--electric-purple);">Bougie 💅</span>
+        </div>
+        <div class="category-card reveal" onclick="filterProducts('kids')">
+          <img src="images/rakhi_kids.png" alt="Kids Rakhis" />
+          <div class="category-info">
+            <span class="category-emoji">🦸</span>
+            <div class="category-name">Kids Special</div>
+            <div class="category-count">60+ Designs</div>
+          </div>
+          <span class="category-fun-tag" style="color: var(--sky-blue);">So Cute! 🥺</span>
+        </div>
+        <div class="category-card reveal" onclick="filterProducts('lumba')">
+          <img src="images/rakhi_lumba.png" alt="Lumba Sets" />
+          <div class="category-info">
+            <span class="category-emoji">💕</span>
+            <div class="category-name">Lumba Sets</div>
+            <div class="category-count">45+ Designs</div>
+          </div>
+          <span class="category-fun-tag" style="color: var(--hot-pink);">Couple Goals 💑</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRODUCTS ========== -->
+  <section class="products" id="products">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-badge">🔥 THE GOOD STUFF</span>
+        <h2 class="section-title">Our Bestsellers (No, Seriously)</h2>
+        <p class="section-subtitle">
+          These are flying off the shelves faster than your brother finishes the sweets. Order quick! 🏃‍♀️💨
+        </p>
+      </div>
+
+      <div class="products-filter reveal">
+        <button class="filter-btn active" onclick="filterProducts('all')">All 🪢</button>
+        <button class="filter-btn" onclick="filterProducts('traditional')">Traditional 👑</button>
+        <button class="filter-btn" onclick="filterProducts('premium')">Premium 💎</button>
+        <button class="filter-btn" onclick="filterProducts('kids')">Kids 🦸</button>
+        <button class="filter-btn" onclick="filterProducts('lumba')">Lumba 💕</button>
+        <button class="filter-btn" onclick="filterProducts('hamper')">Hampers 🎁</button>
+      </div>
+
+      <div class="products-grid" id="productsGrid">
+
+        <!-- Product 1 -->
+        <div class="product-card reveal" data-category="traditional">
+          <div class="product-image-wrapper">
+            <img src="images/rakhi_traditional.png" alt="Royal Kundan Rakhi" />
+            <span class="product-badge bestseller">🔥 Bestseller</span>
+            <div class="product-quick-actions">
+              <button class="quick-action-btn" title="Add to Wishlist" onclick="toggleWishlist(this)">♡</button>
+              <button class="quick-action-btn" title="Quick View">👁️</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category-tag">Traditional</div>
+            <h3 class="product-name">Royal Kundan Rakhi</h3>
+            <p class="product-description">Real kundan stones + golden thread = your bro feeling like royalty 👑</p>
+            <div class="product-rating">
+              <span class="stars">⭐⭐⭐⭐⭐</span>
+              <span class="rating-count">(248 reviews)</span>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-current">₹349</span>
+                <span class="price-original">₹599</span>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('Royal Kundan Rakhi', 349, this)">Add to Cart 🛒</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card reveal" data-category="premium">
+          <div class="product-image-wrapper">
+            <img src="images/rakhi_premium.png" alt="Pearl Elegance Rakhi" />
+            <span class="product-badge new">✨ New</span>
+            <div class="product-quick-actions">
+              <button class="quick-action-btn" title="Add to Wishlist" onclick="toggleWishlist(this)">♡</button>
+              <button class="quick-action-btn" title="Quick View">👁️</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category-tag">Premium</div>
+            <h3 class="product-name">Pearl Elegance Rakhi</h3>
+            <p class="product-description">Pearls + silver thread = "Didi really went all out this year" 💎</p>
+            <div class="product-rating">
+              <span class="stars">⭐⭐⭐⭐⭐</span>
+              <span class="rating-count">(186 reviews)</span>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-current">₹599</span>
+                <span class="price-original">₹899</span>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('Pearl Elegance Rakhi', 599, this)">Add to Cart 🛒</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card reveal" data-category="kids">
+          <div class="product-image-wrapper">
+            <img src="images/rakhi_kids.png" alt="Cartoon Hero Rakhi" />
+            <span class="product-badge sale">30% OFF 🤯</span>
+            <div class="product-quick-actions">
+              <button class="quick-action-btn" title="Add to Wishlist" onclick="toggleWishlist(this)">♡</button>
+              <button class="quick-action-btn" title="Quick View">👁️</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category-tag">Kids Special</div>
+            <h3 class="product-name">Cartoon Hero Rakhi</h3>
+            <p class="product-description">For the little bro who thinks he's a superhero (he kinda is tho) 🦸‍♂️</p>
+            <div class="product-rating">
+              <span class="stars">⭐⭐⭐⭐⭐</span>
+              <span class="rating-count">(312 reviews)</span>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-current">₹149</span>
+                <span class="price-original">₹249</span>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('Cartoon Hero Rakhi', 149, this)">Add to Cart 🛒</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card reveal" data-category="lumba">
+          <div class="product-image-wrapper">
+            <img src="images/rakhi_lumba.png" alt="Meenakari Lumba Set" />
+            <span class="product-badge bestseller">🔥 Bestseller</span>
+            <div class="product-quick-actions">
+              <button class="quick-action-btn" title="Add to Wishlist" onclick="toggleWishlist(this)">♡</button>
+              <button class="quick-action-btn" title="Quick View">👁️</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category-tag">Lumba Set</div>
+            <h3 class="product-name">Meenakari Lumba Set</h3>
+            <p class="product-description">Bhaiya-Bhabhi matching set that'll make them go "awww" 🥰</p>
+            <div class="product-rating">
+              <span class="stars">⭐⭐⭐⭐⭐</span>
+              <span class="rating-count">(198 reviews)</span>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-current">₹499</span>
+                <span class="price-original">₹799</span>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('Meenakari Lumba Set', 499, this)">Add to Cart 🛒</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card reveal" data-category="hamper">
+          <div class="product-image-wrapper">
+            <img src="images/rakhi_hamper.png" alt="Royal Gift Hamper" />
+            <span class="product-badge new">✨ New</span>
+            <div class="product-quick-actions">
+              <button class="quick-action-btn" title="Add to Wishlist" onclick="toggleWishlist(this)">♡</button>
+              <button class="quick-action-btn" title="Quick View">👁️</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category-tag">Gift Hamper</div>
+            <h3 class="product-name">Royal Gift Hamper</h3>
+            <p class="product-description">Rakhi + sweets + dry fruits + chocolates = ultimate bro bribe 😏</p>
+            <div class="product-rating">
+              <span class="stars">⭐⭐⭐⭐⭐</span>
+              <span class="rating-count">(156 reviews)</span>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-current">₹999</span>
+                <span class="price-original">₹1499</span>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('Royal Gift Hamper', 999, this)">Add to Cart 🛒</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card reveal" data-category="premium">
+          <div class="product-image-wrapper">
+            <img src="images/rakhi_modern.png" alt="Modern Silver Rakhi" />
+            <span class="product-badge sale">20% OFF 🤯</span>
+            <div class="product-quick-actions">
+              <button class="quick-action-btn" title="Add to Wishlist" onclick="toggleWishlist(this)">♡</button>
+              <button class="quick-action-btn" title="Quick View">👁️</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category-tag">Premium</div>
+            <h3 class="product-name">Modern Silver Rakhi</h3>
+            <p class="product-description">For the bro who says "I don't wear rakhi" (he'll wear THIS one) 😎</p>
+            <div class="product-rating">
+              <span class="stars">⭐⭐⭐⭐</span>
+              <span class="rating-count">(142 reviews)</span>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-current">₹449</span>
+                <span class="price-original">₹649</span>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('Modern Silver Rakhi', 449, this)">Add to Cart 🛒</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SPIN THE WHEEL ========== -->
+  <section class="spin-section" id="spin">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-badge">🎰 FEELING LUCKY?</span>
+        <h2 class="section-title">Spin the Wheel, Win a Deal! 🎡</h2>
+        <p class="section-subtitle">
+          Try your luck and grab an exclusive discount. One spin per visit — make it count! 🤞
+        </p>
+      </div>
+
+      <div class="wheel-container">
+        <div class="wheel-pointer">📍</div>
+        <div class="wheel" id="wheel">
+          <!-- Segments rendered via CSS + JS -->
+          <div class="wheel-segment" style="transform: rotate(0deg); background: #ff7b2e;"><span>10% OFF</span></div>
+          <div class="wheel-segment" style="transform: rotate(60deg); background: #ff3c78;"><span>FREE SHIP</span></div>
+          <div class="wheel-segment" style="transform: rotate(120deg); background: #a855f7;"><span>25% OFF</span></div>
+          <div class="wheel-segment" style="transform: rotate(180deg); background: #10b981;"><span>₹50 OFF</span></div>
+          <div class="wheel-segment" style="transform: rotate(240deg); background: #38bdf8;"><span>15% OFF</span></div>
+          <div class="wheel-segment" style="transform: rotate(300deg); background: #fbbf24;"><span>MYSTERY!</span></div>
+          <div class="wheel-center">🎯</div>
+        </div>
+      </div>
+
+      <button class="spin-btn" id="spinBtn" onclick="spinWheel()">🎲 SPIN NOW!</button>
+      <div class="spin-result" id="spinResult"></div>
+    </div>
+  </section>
+
+  <!-- ========== OFFERS ========== -->
+  <section class="offers" id="offers">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-badge">💸 SAVE THAT MONEY</span>
+        <h2 class="section-title">Deals So Good, They're Almost Illegal 😏</h2>
+        <p class="section-subtitle">
+          Your wallet will thank you. Your bro will thank you more. Win-win. 🙌
+        </p>
+      </div>
+      <div class="offers-grid">
+        <div class="offer-card primary reveal" onclick="scrollToSection('products')">
+          <div class="offer-emoji">🎉</div>
+          <div class="offer-tag">⚡ Limited Time</div>
+          <h3 class="offer-title">Flat 40% Off Combos!</h3>
+          <p class="offer-text">Buy 3 rakhis, get a premium gift box FREE. Use code <strong>RAKHI40</strong> at checkout.</p>
+          <button class="btn">Grab the Deal →</button>
+        </div>
+        <div class="offer-card secondary reveal" onclick="scrollToSection('products')">
+          <div class="offer-emoji">🚀</div>
+          <div class="offer-tag">🕐 Today Only</div>
+          <h3 class="offer-title">Free Express Shipping!</h3>
+          <p class="offer-text">Orders ₹499+ get lightning-fast delivery + complimentary roli chawal & sweets. 🍬</p>
+          <button class="btn">Shop Now →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FUN FACTS ========== -->
+  <section class="fun-facts reveal">
+    <div class="container">
+      <div class="facts-grid">
+        <div class="fact-item">
+          <span class="fact-emoji">🪢</span>
+          <div class="fact-text">
+            <strong>5,00,000+</strong>
+            <span>Rakhis sent across India</span>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-emoji">📦</span>
+          <div class="fact-text">
+            <strong>99.2%</strong>
+            <span>On-time delivery rate</span>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-emoji">🌍</span>
+          <div class="fact-text">
+            <strong>25+ Countries</strong>
+            <span>International shipping</span>
+          </div>
+        </div>
+        <div class="fact-item">
+          <span class="fact-emoji">🤝</span>
+          <div class="fact-text">
+            <strong>200+ Artisans</strong>
+            <span>Supported & empowered</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-badge">💌 LOVE NOTES</span>
+        <h2 class="section-title">Don't Take Our Word For It</h2>
+        <p class="section-subtitle">
+          Here's what real sisters (and some really happy brothers) have to say! 🥹
+        </p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-emoji">🤩</div>
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">
+            "My brother literally REFUSED to take it off for 3 days. The Kundan Rakhi was SO 
+            pretty. Even my mom was jealous she didn't pick it! 10/10 would order again."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">P</div>
+            <div>
+              <div class="author-name">Priya Sharma</div>
+              <div class="author-location">Mumbai 🏙️</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-emoji">😭</div>
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">
+            "Ordered last minute (yes I'm THAT sibling 😅) and it reached a day before 
+            Raksha Bandhan! The Lumba set made my bhabhi cry happy tears. 11/10!"
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">A</div>
+            <div>
+              <div class="author-name">Ananya Gupta</div>
+              <div class="author-location">Delhi 🏛️</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-emoji">🥰</div>
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">
+            "My 5-year-old brother saw the cartoon rakhi and screamed 'DIDI YOU'RE THE 
+            BEST!' — I've never felt more powerful in my life. Best purchase EVER."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div>
+              <div class="author-name">Sneha Patel</div>
+              <div class="author-location">Ahmedabad 🏗️</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NEWSLETTER ========== -->
+  <section class="newsletter" id="newsletter">
+    <div class="container">
+      <div class="newsletter-content reveal">
+        <span class="section-badge">📬 JOIN THE SQUAD</span>
+        <h2 class="section-title">Get the Tea on Deals & Drops ☕</h2>
+        <p class="section-subtitle">
+          Subscribe and be the first to know when we drop new collections, deals, 
+          and the occasional meme. No spam, pinky promise. 🤙
+        </p>
+        <form class="newsletter-form" id="newsletterForm" onsubmit="handleNewsletter(event)">
+          <input type="email" class="newsletter-input" placeholder="your.email@example.com ✉️" required id="newsletterEmail" />
+          <button type="submit" class="btn btn-primary">Count Me In! 🎉</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="footer-logo-icon">🪢</span>
+            Rakhee Threads
+          </div>
+          <p class="footer-description">
+            India's most fun Rakhi store! We handcraft each rakhi with love, bad jokes, 
+            and the belief that every sibling bond deserves to be celebrated. 💛
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" title="Instagram">📸</a>
+            <a href="#" class="social-link" title="Twitter/X">🐦</a>
+            <a href="#" class="social-link" title="YouTube">🎬</a>
+            <a href="#" class="social-link" title="Pinterest">📌</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Explore 🗺️</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#products">Shop</a></li>
+            <li><a href="#spin">Win Prizes</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Help 🆘</h4>
+          <ul class="footer-links">
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Privacy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Say Hi! 👋</h4>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📍</span>
+            <span>123 Rakhi Lane, Jaipur,<br/>Rajasthan 302001</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📞</span>
+            <span>+91 98765 43210</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📧</span>
+            <span>hello@rakheethreads.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">⏰</span>
+            <span>Mon–Sat: 9 AM – 8 PM IST</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Rakhee Threads · Made with ❤️ and lots of chai ☕ in India</p>
+        <span class="footer-bottom-fun">~ your bro deserves the best rakhi, periodt. 💅</span>
+        <div class="payment-methods">💳 🏦 📱 🔒</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Beam me up! 🚀">🚀</button>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span id="toastEmoji">🎉</span>
+    <span id="toastMessage">Added to cart!</span>
+  </div>
+
+  <!-- Prize Modal -->
+  <div class="modal-overlay" id="prizeModal">
+    <div class="modal-box">
+      <div class="modal-emoji" id="modalEmoji">🎊</div>
+      <h3 class="modal-title" id="modalTitle">You Won!</h3>
+      <p class="modal-text" id="modalText">Here's your exclusive discount code:</p>
+      <div class="modal-code" id="modalCode">RAKHI10</div>
+      <button class="modal-close" onclick="closeModal()">Yay, Thanks! 🙏</button>
+    </div>
+  </div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // ===== Floating Emoji Background =====
+    (function createFloatingEmojis() {
+      const emojis = ['🪢', '✨', '🎀', '💛', '🌸', '🪷', '🎊', '💐', '🌺', '🎉', '💕'];
+      const container = document.getElementById('emojiBg');
+      for (let i = 0; i < 20; i++) {
+        const emoji = document.createElement('span');
+        emoji.className = 'emoji-float';
+        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        emoji.style.left = Math.random() * 100 + '%';
+        emoji.style.fontSize = (1.2 + Math.random() * 1.5) + 'rem';
+        emoji.style.animationDuration = (15 + Math.random() * 25) + 's';
+        emoji.style.animationDelay = -(Math.random() * 30) + 's';
+        container.appendChild(emoji);
+      }
+    })();
+
+    // ===== Emoji Cursor Trail =====
+    const cursorEmojis = ['✨', '💛', '🌟', '💫', '⭐'];
+    let lastCursorTime = 0;
+    document.addEventListener('mousemove', (e) => {
+      const now = Date.now();
+      if (now - lastCursorTime < 100) return; // throttle
+      lastCursorTime = now;
+
+      const emoji = document.createElement('span');
+      emoji.className = 'cursor-emoji';
+      emoji.textContent = cursorEmojis[Math.floor(Math.random() * cursorEmojis.length)];
+      emoji.style.left = e.clientX + 'px';
+      emoji.style.top = e.clientY + 'px';
+      document.body.appendChild(emoji);
+      setTimeout(() => emoji.remove(), 1000);
+    });
+
+    // ===== Confetti System =====
+    const confettiCanvas = document.getElementById('confettiCanvas');
+    const ctx = confettiCanvas.getContext('2d');
+    let confettiParticles = [];
+
+    function resizeCanvas() {
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    class Confetti {
+      constructor(x, y) {
+        this.x = x || Math.random() * confettiCanvas.width;
+        this.y = y || -10;
+        this.size = Math.random() * 8 + 4;
+        this.speedX = (Math.random() - 0.5) * 8;
+        this.speedY = Math.random() * 4 + 2;
+        this.color = ['#ff7b2e', '#ff3c78', '#a855f7', '#fbbf24', '#10b981', '#38bdf8'][Math.floor(Math.random() * 6)];
+        this.rotation = Math.random() * 360;
+        this.rotationSpeed = (Math.random() - 0.5) * 15;
+        this.opacity = 1;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.speedY += 0.1; // gravity
+        this.rotation += this.rotationSpeed;
+        this.opacity -= 0.008;
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation * Math.PI / 180);
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = this.color;
+        ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size * 0.6);
+        ctx.restore();
+      }
+    }
+
+    function fireConfetti(x, y) {
+      const centerX = x || confettiCanvas.width / 2;
+      const centerY = y || confettiCanvas.height / 3;
+      for (let i = 0; i < 80; i++) {
+        const p = new Confetti(centerX, centerY);
+        p.speedX = (Math.random() - 0.5) * 16;
+        p.speedY = -(Math.random() * 8 + 4);
+        confettiParticles.push(p);
+      }
+    }
+
+    function animateConfetti() {
+      ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      confettiParticles = confettiParticles.filter(p => p.opacity > 0);
+      confettiParticles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateConfetti);
+    }
+    animateConfetti();
+
+    // ===== Cart =====
+    let cartItems = [];
+    let cartCount = 0;
+
+    function addToCart(name, price, btnEl) {
+      cartItems.push({ name, price });
+      cartCount++;
+      document.getElementById('cartCount').textContent = cartCount;
+
+      // Bounce the cart count
+      const countEl = document.getElementById('cartCount');
+      countEl.classList.remove('bump');
+      void countEl.offsetWidth; // reflow trick
+      countEl.classList.add('bump');
+
+      // Button text change
+      const originalText = btnEl.textContent;
+      btnEl.textContent = 'Added! ✅';
+      btnEl.style.background = 'var(--emerald)';
+      setTimeout(() => {
+        btnEl.textContent = originalText;
+        btnEl.style.background = '';
+      }, 1500);
+
+      // Fire confetti from button position
+      const rect = btnEl.getBoundingClientRect();
+      fireConfetti(rect.left + rect.width / 2, rect.top);
+
+      showToast(`${name} added! 🎉`, '🛒');
+    }
+
+    function shakeCart() {
+      const cart = document.getElementById('navCart');
+      cart.style.animation = 'none';
+      void cart.offsetWidth;
+      cart.style.animation = 'tagShake 0.5s var(--ease-bounce)';
+      if (cartCount === 0) {
+        showToast("Cart's empty! Go shopping! 🛍️", '😅');
+      } else {
+        showToast(`${cartCount} item${cartCount > 1 ? 's' : ''} in cart — Total: ₹${cartItems.reduce((s, i) => s + i.price, 0)}`, '🛒');
+      }
+    }
+
+    // ===== Wishlist Toggle =====
+    function toggleWishlist(btn) {
+      btn.classList.toggle('liked');
+      if (btn.classList.contains('liked')) {
+        btn.textContent = '❤️';
+        showToast('Added to wishlist! 💕', '❤️');
+      } else {
+        btn.textContent = '♡';
+        showToast('Removed from wishlist', '💔');
+      }
+    }
+
+    // ===== Toast =====
+    function showToast(message, emoji = '🎉') {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMessage').textContent = message;
+      document.getElementById('toastEmoji').textContent = emoji;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    // ===== Product Filter =====
+    function filterProducts(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+        const btnText = btn.textContent.toLowerCase();
+        if (category === 'all' && btnText.includes('all')) btn.classList.add('active');
+        else if (btnText.includes(category)) btn.classList.add('active');
+      });
+
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach((card, i) => {
+        const cat = card.getAttribute('data-category');
+        if (category === 'all' || cat === category) {
+          card.style.display = 'block';
+          card.style.animation = `popIn 0.5s ${i * 0.08}s both`;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      scrollToSection('products');
+    }
+
+    // ===== Spin the Wheel =====
+    const prizes = [
+      { text: '10% OFF', code: 'RAKHI10', emoji: '🎉' },
+      { text: 'FREE SHIPPING', code: 'SHIPFREE', emoji: '🚀' },
+      { text: '25% OFF', code: 'MEGA25', emoji: '🤑' },
+      { text: '₹50 OFF', code: 'FLAT50', emoji: '💰' },
+      { text: '15% OFF', code: 'LUCKY15', emoji: '🍀' },
+      { text: 'MYSTERY GIFT', code: 'MYSTERY', emoji: '🎁' },
+    ];
+    let hasSpun = false;
+
+    function spinWheel() {
+      if (hasSpun) return;
+      hasSpun = true;
+
+      const spinBtn = document.getElementById('spinBtn');
+      spinBtn.disabled = true;
+      spinBtn.textContent = '🎡 Spinning...';
+
+      const wheel = document.getElementById('wheel');
+      const prizeIndex = Math.floor(Math.random() * prizes.length);
+      // Each segment is 60deg. We want to land on that segment.
+      const segmentAngle = 60;
+      const targetAngle = 360 - (prizeIndex * segmentAngle + segmentAngle / 2);
+      const totalRotation = 360 * 5 + targetAngle; // 5 full spins + target
+
+      wheel.style.transform = `rotate(${totalRotation}deg)`;
+
+      setTimeout(() => {
+        const prize = prizes[prizeIndex];
+        document.getElementById('spinResult').textContent = `🎊 You won: ${prize.text}! Use code below! 🎊`;
+
+        // Fire confetti
+        fireConfetti();
+
+        // Show prize modal
+        document.getElementById('modalEmoji').textContent = prize.emoji;
+        document.getElementById('modalTitle').textContent = `You Won ${prize.text}!`;
+        document.getElementById('modalText').textContent = "Here's your exclusive discount code. Use it at checkout!";
+        document.getElementById('modalCode').textContent = prize.code;
+        document.getElementById('prizeModal').classList.add('active');
+
+        spinBtn.textContent = '✅ Already Spun!';
+      }, 4500);
+    }
+
+    function closeModal() {
+      document.getElementById('prizeModal').classList.remove('active');
+    }
+
+    // ===== Countdown Timer =====
+    function updateCountdown() {
+      // Raksha Bandhan 2026 — August 28, 2026
+      const rakshabandhan = new Date('2026-08-28T00:00:00+05:30');
+      const now = new Date();
+      const diff = rakshabandhan - now;
+
+      if (diff <= 0) {
+        document.getElementById('countDays').textContent = '🎉';
+        document.getElementById('countHours').textContent = '🎊';
+        document.getElementById('countMins').textContent = '🥳';
+        document.getElementById('countSecs').textContent = '🪢';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('countDays').textContent = String(days).padStart(2, '0');
+      document.getElementById('countHours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('countMins').textContent = String(mins).padStart(2, '0');
+      document.getElementById('countSecs').textContent = String(secs).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ===== Smooth Scroll =====
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ===== Navbar & Back to Top =====
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      const backToTop = document.getElementById('backToTop');
+
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+      backToTop.classList.toggle('visible', window.scrollY > 500);
+    });
+
+    // ===== Scroll Reveal =====
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          el.classList.add('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    // ===== Newsletter =====
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const email = document.getElementById('newsletterEmail').value;
+      fireConfetti();
+      showToast(`Welcome to the squad, ${email.split('@')[0]}! 🎊`, '🥳');
+      document.getElementById('newsletterForm').reset();
+    }
+
+    // ===== Mobile Menu =====
+    function toggleMobileMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    // ===== Fire confetti on page load (celebration!) =====
+    window.addEventListener('load', () => {
+      setTimeout(() => fireConfetti(), 800);
+    });
+  </script>
+</body>
+</html>

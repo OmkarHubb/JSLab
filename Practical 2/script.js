@@ -1,6 +1,5 @@
 function calculateBill() {
 
-    // Input Values
     let customerName = document.getElementById("customerName").value;
     let productName = document.getElementById("productName").value;
 
@@ -13,14 +12,12 @@ function calculateBill() {
 
     let paymentMethod = document.getElementById("paymentMethod").value;
 
-    // Calculations
     let subtotal = price * qty;
 
     let discountAmount = (subtotal * discount) / 100;
 
     let taxableAmount = subtotal - discountAmount - coupon;
 
-    // Prevent negative taxable amount
     if (taxableAmount < 0) {
         taxableAmount = 0;
     }
@@ -29,7 +26,6 @@ function calculateBill() {
 
     let finalTotal = taxableAmount + gstAmount + shipping;
 
-    // Display Bill Summary
     document.getElementById("customer").innerHTML =
         "Customer Name: " + customerName;
 

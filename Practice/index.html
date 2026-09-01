@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Registration form with real-time validation">
+    <title>Registration Form | Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <div class="form-card" id="formCard">
+            <div class="card-header">
+                <h1 id="formTitle">Create Account</h1>
+                <p class="subtitle">Fill in your details to register</p>
+            </div>
+
+            <form id="registrationForm" novalidate>
+
+                <div class="input-group" id="fullNameGroup">
+                    <label for="fullName" class="input-label">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                    <p class="error-message" id="fullNameError"></p>
+                </div>
+
+                <div class="input-group" id="usernameGroup">
+                    <label for="username" class="input-label">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                    <p class="error-message" id="usernameError"></p>
+                </div>
+
+                <div class="input-group" id="emailGroup">
+                    <label for="email" class="input-label">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="email" required>
+                    <p class="error-message" id="emailError"></p>
+                </div>
+
+                <div class="input-group" id="phoneGroup">
+                    <label for="phone" class="input-label">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    <p class="error-message" id="phoneError"></p>
+                </div>
+
+                <div class="input-group" id="dobGroup">
+                    <label for="dob" class="input-label">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" required>
+                    <p class="error-message" id="dobError"></p>
+                </div>
+
+                <div class="input-group" id="genderGroup">
+                    <label for="gender" class="input-label">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">-- Select Gender --</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <p class="error-message" id="genderError"></p>
+                </div>
+
+                <div class="input-group" id="passwordGroup">
+                    <label for="password" class="input-label">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        <button type="button" class="toggle-btn" id="togglePassword">Show</button>
+                    </div>
+                    <div class="strength-bar-container" id="strengthContainer">
+                        <div class="strength-bar" id="strengthBar"></div>
+                    </div>
+                    <p class="strength-label" id="strengthLabel"></p>
+                    <p class="error-message" id="passwordError"></p>
+                </div>
+
+                <div class="input-group" id="confirmPasswordGroup">
+                    <label for="confirmPassword" class="input-label">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                    <p class="error-message" id="confirmPasswordError"></p>
+                </div>
+
+                <div class="checkbox-row">
+                    <label class="checkbox-label" for="terms">
+                        <input type="checkbox" id="terms" name="terms">
+                        <span class="custom-check"></span>
+                        I agree to the <a href="#">Terms & Conditions</a>
+                    </label>
+                    <p class="error-message" id="termsError"></p>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submitBtn">Register</button>
+            </form>
+
+            <div class="success-box" id="successBox">
+                <span class="success-icon">✅</span>
+                <h2>Registration Successful!</h2>
+                <p>Your account has been created.</p>
+            </div>
+
+            <div class="card-footer">
+                <p>Already have an account? <a href="#">Sign in</a></p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

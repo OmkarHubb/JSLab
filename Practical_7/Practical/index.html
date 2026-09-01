@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Task Manager // To-Do List</title>
+    <!-- Google Fonts: Space Grotesk & Space Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="app-container">
+        <!-- Retro Window Top Bar -->
+        <header class="window-header">
+            <div class="window-controls">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            <div class="window-title">TODO_OS // v1.0.4</div>
+            <div class="window-badge">SYSTEM: READY</div>
+        </header>
+
+        <!-- App Content Body -->
+        <div class="window-body">
+            <!-- App Header Title -->
+            <div class="app-header">
+                <h1 class="app-title">TASKS.EXE</h1>
+                <p class="app-subtitle">Retro Modern Task Organizer</p>
+            </div>
+
+            <!-- Task Input Section -->
+            <div class="input-group">
+                <input type="text" id="taskInput" placeholder="Enter a new task..." autocomplete="off"
+                    aria-label="New task input">
+                <button type="button" id="addBtn">ADD TASK</button>
+            </div>
+
+            <!-- Task List Section -->
+            <ul id="taskList" class="task-list"></ul>
+
+            <!-- Empty State Container -->
+            <div id="emptyState" class="empty-state">
+                <div class="empty-icon">📂</div>
+                <div class="empty-text">NO PENDING TASKS</div>
+                <div class="empty-subtext">Add your first task above to get started</div>
+            </div>
+        </div>
+
+        <!-- Retro Footer Status Bar -->
+        <footer class="window-footer">
+            <span>MEM: 640KB OK</span>
+            <span>STATUS: ACTIVE</span>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

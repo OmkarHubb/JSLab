@@ -1,0 +1,305 @@
+/* ==========================================================================
+   RETRO MODERN TASK MANAGER STYLESHEET
+   ========================================================================== */
+
+/* Design Tokens & Theme Variables */
+:root {
+    --bg-color: #f3efe6;
+    --grid-line: #e3dad0;
+    --card-bg: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-muted: #666055;
+    --border-color: #1a1a1a;
+    
+    --accent-orange: #ff5a36;
+    --accent-yellow: #ffc83b;
+    --accent-teal: #2ec4b6;
+    --accent-blue: #3a86ff;
+    --accent-red: #ff4757;
+    
+    --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    
+    --border-width: 2.5px;
+    --shadow-solid: 4px 4px 0px var(--border-color);
+    --shadow-solid-sm: 2.5px 2.5px 0px var(--border-color);
+}
+
+/* Base Resets */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    background-image: 
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 24px 24px;
+    font-family: var(--font-mono);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+
+/* App Container (Retro Window Frame) */
+.app-container {
+    width: 100%;
+    max-width: 540px;
+    background-color: var(--card-bg);
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: var(--shadow-solid);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Window Header Bar */
+.window-header {
+    background-color: var(--text-primary);
+    color: #ffffff;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    user-select: none;
+}
+
+.window-controls {
+    display: flex;
+    gap: 6px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid #000000;
+}
+
+.dot.red { background-color: #ff5f56; }
+.dot.yellow { background-color: #ffbd2e; }
+.dot.green { background-color: #27c93f; }
+
+.window-title {
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.window-badge {
+    background-color: var(--accent-yellow);
+    color: var(--text-primary);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    border: 1px solid var(--border-color);
+}
+
+/* Window Body Content */
+.window-body {
+    padding: 24px;
+}
+
+/* App Header Section */
+.app-header {
+    margin-bottom: 20px;
+    border-bottom: var(--border-width) dashed var(--border-color);
+    padding-bottom: 14px;
+}
+
+.app-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    line-height: 1.1;
+    color: var(--text-primary);
+}
+
+.app-subtitle {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* Input Form Group */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+#taskInput {
+    flex: 1;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    padding: 12px 14px;
+    background-color: #fffefb;
+    color: var(--text-primary);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 4px;
+    box-shadow: var(--shadow-solid-sm);
+    outline: none;
+}
+
+#taskInput::placeholder {
+    color: #a09889;
+}
+
+#taskInput:focus {
+    background-color: #ffffff;
+    border-color: var(--border-color);
+    box-shadow: 3.5px 3.5px 0px var(--accent-teal);
+}
+
+#addBtn {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 12px 18px;
+    background-color: var(--accent-orange);
+    color: #ffffff;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 4px;
+    box-shadow: var(--shadow-solid-sm);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+#addBtn:hover {
+    background-color: #f04824;
+}
+
+#addBtn:active {
+    box-shadow: 1px 1px 0px var(--border-color);
+    transform: translate(1.5px, 1.5px);
+}
+
+/* Task List */
+.task-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.task-list li {
+    background-color: #faf8f5;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 4px;
+    padding: 12px 14px;
+    box-shadow: var(--shadow-solid-sm);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    word-break: break-word;
+}
+
+.task-list li span {
+    flex: 1;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+/* Task Action Buttons (edit & delete dynamically generated by script.js) */
+.task-list li button {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px var(--border-color);
+    flex-shrink: 0;
+}
+
+.task-list li button.edit {
+    background-color: var(--accent-yellow);
+    color: var(--text-primary);
+}
+
+.task-list li button.edit:hover {
+    background-color: #ebd025;
+}
+
+.task-list li button.edit:active {
+    box-shadow: 0px 0px 0px var(--border-color);
+    transform: translate(2px, 2px);
+}
+
+.task-list li button.delete {
+    background-color: var(--accent-red);
+    color: #ffffff;
+}
+
+.task-list li button.delete:hover {
+    background-color: #e03847;
+}
+
+.task-list li button.delete:active {
+    box-shadow: 0px 0px 0px var(--border-color);
+    transform: translate(2px, 2px);
+}
+
+/* Empty State Styling */
+.empty-state {
+    text-align: center;
+    padding: 32px 16px;
+    border: var(--border-width) dashed var(--border-color);
+    border-radius: 4px;
+    background-color: #faf7f0;
+    margin-top: 8px;
+}
+
+.empty-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.empty-text {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+}
+
+.empty-subtext {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* Window Footer Bar */
+.window-footer {
+    background-color: #eae3d5;
+    border-top: var(--border-width) solid var(--border-color);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-weight: 700;
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Registration Complete</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 50%, #fad0c4 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .welcome-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4caf50, #81c784);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: #6C63FF;
+            margin-bottom: 0.5rem;
+        }
+
+        .welcome-name {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .details-table tr {
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .details-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .details-table td {
+            padding: 0.65rem 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .details-table td:first-child {
+            font-weight: 600;
+            color: #444;
+            width: 40%;
+        }
+
+        .details-table td:last-child {
+            color: #666;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, #6C63FF, #e040fb);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-back:hover {
+            opacity: 0.92;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-card">
+        <div class="checkmark">&#10003;</div>
+        <h1>Registration Successful!</h1>
+        <p class="welcome-name" id="welcomeName"></p>
+
+        <table class="details-table" id="detailsTable">
+            <tr>
+                <td>Full Name</td>
+                <td id="detailName">-</td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td id="detailUsername">-</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td id="detailEmail">-</td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td id="detailPhone">-</td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td id="detailDob">-</td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td id="detailGender">-</td>
+            </tr>
+        </table>
+
+        <a href="index.html" class="btn-back">Back to Home</a>
+    </div>
+
+    <script>
+        const data = JSON.parse(localStorage.getItem('registrationData'));
+
+        if (data) {
+            document.getElementById('welcomeName').textContent = 'Welcome, ' + data.fullName + '!';
+            document.getElementById('detailName').textContent = data.fullName;
+            document.getElementById('detailUsername').textContent = data.username;
+            document.getElementById('detailEmail').textContent = data.email;
+            document.getElementById('detailPhone').textContent = data.phone;
+            document.getElementById('detailDob').textContent = data.dob;
+            document.getElementById('detailGender').textContent = data.gender.charAt(0).toUpperCase() + data.gender.slice(1);
+            localStorage.removeItem('registrationData');
+        } else {
+            document.getElementById('welcomeName').textContent = 'Welcome!';
+        }
+    </script>
+</body>
+</html>

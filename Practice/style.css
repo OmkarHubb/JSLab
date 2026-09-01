@@ -1,0 +1,297 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 30%, #a18cd1 60%, #fbc2eb 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 520px;
+}
+
+.form-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 2.5rem 2rem 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+
+.card-header h1 {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: #6C63FF;
+    margin-bottom: 0.3rem;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.input-group {
+    margin-bottom: 1.1rem;
+}
+
+.input-label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 0.35rem;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    background: #fafafa;
+    color: #333;
+    outline: none;
+}
+
+.input-group input::placeholder {
+    color: #bbb;
+}
+
+.input-group select {
+    cursor: pointer;
+    color: #555;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #6C63FF;
+    background: #fff;
+}
+
+.input-group.success input,
+.input-group.success select {
+    border-color: #4caf50;
+    background: #f1fdf2;
+}
+
+.input-group.error input,
+.input-group.error select {
+    border-color: #f44336;
+    background: #fff5f5;
+}
+
+.error-message {
+    font-size: 0.75rem;
+    color: #f44336;
+    margin-top: 0.25rem;
+    min-height: 0.9rem;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+}
+
+.password-wrapper input {
+    flex: 1;
+    padding-right: 4rem;
+}
+
+.toggle-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #6C63FF;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.toggle-btn:hover {
+    background: #564fd6;
+}
+
+.strength-bar-container {
+    height: 5px;
+    background: #eee;
+    border-radius: 5px;
+    margin-top: 0.45rem;
+    overflow: hidden;
+    display: none;
+}
+
+.strength-bar-container.visible {
+    display: block;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0;
+    border-radius: 5px;
+}
+
+.strength-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-top: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.checkbox-row {
+    margin-bottom: 1.25rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #555;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.custom-check {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    position: relative;
+}
+
+.custom-check::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 5px;
+    border-left: 2.5px solid #fff;
+    border-bottom: 2.5px solid #fff;
+    top: 3px;
+    left: 2px;
+    transform: rotate(-45deg) scale(0);
+}
+
+.checkbox-label input:checked + .custom-check {
+    background: #6C63FF;
+    border-color: #6C63FF;
+}
+
+.checkbox-label input:checked + .custom-check::after {
+    transform: rotate(-45deg) scale(1);
+}
+
+.checkbox-label a {
+    color: #6C63FF;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.checkbox-label a:hover {
+    text-decoration: underline;
+}
+
+.checkbox-row .error-message {
+    margin-top: 0.25rem;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 0.85rem;
+    background: linear-gradient(135deg, #6C63FF, #e040fb);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+}
+
+.btn-submit:hover {
+    opacity: 0.92;
+}
+
+.btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.success-box {
+    display: none;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.success-box.visible {
+    display: block;
+}
+
+.success-icon {
+    font-size: 2.5rem;
+}
+
+.success-box h2 {
+    font-size: 1.3rem;
+    color: #4caf50;
+    margin: 0.5rem 0 0.3rem;
+}
+
+.success-box p {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.card-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.card-footer a {
+    color: #6C63FF;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.card-footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .form-card {
+        padding: 1.75rem 1.25rem 1.5rem;
+    }
+
+    .card-header h1 {
+        font-size: 1.5rem;
+    }
+}
