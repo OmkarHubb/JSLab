@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS FIT // Bio-Lab Gym Admission Portal</title>
+    <!-- Modern Tech Fonts: Syne, Space Grotesk, Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Holographic Bio-Dome Ambient Background -->
+    <div class="bio-dome-canvas">
+        <div class="cyber-grid-overlay"></div>
+        <div class="bio-light-ring ring-1"></div>
+        <div class="bio-light-ring ring-2"></div>
+    </div>
+
+    <div class="nexus-portal-frame">
+        
+        <!-- Top Tech Console Navigation Bar -->
+        <header class="nexus-navbar">
+            <div class="brand-unit">
+                <div class="core-symbol">
+                    <span class="symbol-pulse"></span>
+                    <span>❖</span>
+                </div>
+                <div class="brand-text">
+                    <span class="nexus-title">NEXUS<span class="highlight-cyan">FIT</span></span>
+                    <span class="nexus-sub">ADMISSION BIO-LAB</span>
+                </div>
+            </div>
+
+            <div class="console-metrics">
+                <div class="metric-badge"><span class="green-dot">●</span> SYSTEM ONLINE</div>
+                <div class="metric-badge tech-badge">LOC: SECTOR-07</div>
+            </div>
+        </header>
+
+        <!-- Dynamic AI Coach Telemetry HUD -->
+        <div id="focusBanner" class="telemetry-hud">
+            <div class="hud-ai-tag">
+                <span class="ai-pulse"></span>
+                <span class="banner-badge">NEXUS AI</span>
+            </div>
+            <span id="hintText" class="hud-instruction">Select any input module to initiate your athletic registration.</span>
+        </div>
+
+        <!-- Main Interactive Bio-Console Layout -->
+        <main class="console-layout">
+            
+            <!-- Left Console: Bio Data Entry Modules -->
+            <section class="modules-container">
+                <form id="gymForm" novalidate>
+                    
+                    <!-- MODULE 01: IDENTITY -->
+                    <div class="console-module">
+                        <div class="module-title-bar">
+                            <span class="mod-code">MOD // 01</span>
+                            <h2>IDENTITY MATRIX</h2>
+                        </div>
+
+                        <!-- Name Input -->
+                        <div class="input-module">
+                            <label for="nameInput" class="input-label">FULL ATHLETE NAME</label>
+                            <div class="glow-field-wrapper">
+                                <span class="field-icon">👤</span>
+                                <input type="text" id="nameInput" name="name" placeholder="Enter athlete full name..." autocomplete="off" required>
+                            </div>
+                            <span class="error-msg" id="nameError"></span>
+                        </div>
+
+                        <!-- Sex Radio Cards -->
+                        <div class="input-module margin-top-sm">
+                            <label class="input-label">BIOLOGICAL CLASSIFICATION (SEX)</label>
+                            <div class="sex-selector-row">
+                                <label class="sex-card">
+                                    <input type="radio" name="sex" value="Male">
+                                    <div class="sex-card-body">
+                                        <span class="sex-icon">♂️</span>
+                                        <div class="sex-info">
+                                            <span class="sex-title">MALE</span>
+                                            <span class="sex-sub">Class Alpha</span>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="sex-card">
+                                    <input type="radio" name="sex" value="Female">
+                                    <div class="sex-card-body">
+                                        <span class="sex-icon">♀️</span>
+                                        <div class="sex-info">
+                                            <span class="sex-title">FEMALE</span>
+                                            <span class="sex-sub">Class Prime</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <span class="error-msg" id="sexError"></span>
+                        </div>
+                    </div>
+
+                    <!-- MODULE 02: PHYSICAL SPECS -->
+                    <div class="console-module">
+                        <div class="module-title-bar">
+                            <span class="mod-code">MOD // 02</span>
+                            <h2>PHYSICAL DIAGNOSTICS</h2>
+                        </div>
+
+                        <!-- Eye Color Dropdown -->
+                        <div class="input-module">
+                            <label for="eyeColorSelect" class="input-label">EYE COLOR DIAGNOSTIC</label>
+                            <div class="glow-field-wrapper">
+                                <span class="field-icon">👁️</span>
+                                <select id="eyeColorSelect" name="eyeColor" required>
+                                    <option value="">-- Select Eye Spectrum --</option>
+                                    <option value="Green" selected>🟢 Green Spectrum</option>
+                                    <option value="Brown">🤎 Brown Spectrum</option>
+                                    <option value="Blue">🔵 Blue Spectrum</option>
+                                    <option value="Hazel">🟡 Hazel Spectrum</option>
+                                    <option value="Black">🖤 Dark Spectrum</option>
+                                </select>
+                            </div>
+                            <span class="error-msg" id="eyeColorError"></span>
+                        </div>
+
+                        <!-- Checkboxes: Trait Modifiers -->
+                        <div class="input-module margin-top-sm">
+                            <label class="input-label">PHYSICAL METRIC MODIFIERS (CHECK ALL THAT APPLY)</label>
+                            <div class="traits-toggle-grid">
+                                <label class="trait-card">
+                                    <input type="checkbox" id="traitHeight" name="traits" value="Over 6 feet tall">
+                                    <div class="trait-card-body">
+                                        <span class="trait-icon">📏</span>
+                                        <div class="trait-info">
+                                            <span class="trait-name">Over 6 feet tall</span>
+                                            <span class="trait-stat">Height Metric Class A</span>
+                                        </div>
+                                        <div class="toggle-indicator"></div>
+                                    </div>
+                                </label>
+
+                                <label class="trait-card">
+                                    <input type="checkbox" id="traitWeight" name="traits" value="Over 200 pounds">
+                                    <div class="trait-card-body">
+                                        <span class="trait-icon">🦍</span>
+                                        <div class="trait-info">
+                                            <span class="trait-name">Over 200 pounds</span>
+                                            <span class="trait-stat">Mass Metric Heavyweight</span>
+                                        </div>
+                                        <div class="toggle-indicator"></div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MODULE 03: ATHLETIC ABILITY -->
+                    <div class="console-module">
+                        <div class="module-title-bar">
+                            <span class="mod-code">MOD // 03</span>
+                            <h2>ATHLETIC LOG & CAPABILITY</h2>
+                        </div>
+
+                        <!-- Quick Tag Skill Pills -->
+                        <div class="skill-pills-row">
+                            <span class="pills-title">QUICK LOG:</span>
+                            <button type="button" class="skill-pill" data-text="Powerlifting enthusiast with heavy compound training.">🏋️ Heavy Powerlifting</button>
+                            <button type="button" class="skill-pill" data-text="Marathon runner with high VO2 max endurance.">🏃 High Endurance</button>
+                            <button type="button" class="skill-pill" data-text="Functional calisthenics & core stability training.">🤸 Calisthenics</button>
+                            <button type="button" class="skill-pill" data-text="Explosive HIIT & athletic conditioning.">🔥 HIIT Conditioning</button>
+                        </div>
+
+                        <div class="input-module">
+                            <label for="athleticDesc" class="input-label">DESCRIBE YOUR ATHLETIC ABILITY:</label>
+                            <textarea id="athleticDesc" name="athleticDesc" rows="3" placeholder="Enter physical endurance, fitness history, or training objectives..." required></textarea>
+                            <span class="error-msg" id="athleticError"></span>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="action-dock">
+                        <button type="submit" id="submitBtn" class="nexus-submit-btn">
+                            <span class="btn-cyan-glow"></span>
+                            <span class="btn-text">ENTER MY INFORMATION ⚡</span>
+                        </button>
+                    </div>
+
+                </form>
+            </section>
+
+            <!-- Right Console: Holographic Bio-Pass Display Card -->
+            <section class="holographic-display-panel">
+                <div class="display-header">
+                    <span class="display-tag">HOLOGRAPHIC KEYPASS PREVIEW</span>
+                    <span class="beacon-dot"></span>
+                </div>
+
+                <div class="card-projection-stage">
+                    <div class="physical-gym-card" id="gymCard">
+                        
+                        <div class="card-glass-glow"></div>
+
+                        <!-- Top Header -->
+                        <div class="gym-card-top">
+                            <div class="card-logo">
+                                <span class="nexus-star">❖</span> NEXUS PASS
+                            </div>
+                            <span id="passTierBadge" class="card-badge">UNVERIFIED</span>
+                        </div>
+
+                        <!-- RFID Chip & Avatar -->
+                        <div class="card-mid-section">
+                            <div class="rfid-chip">
+                                <div class="chip-grid"></div>
+                            </div>
+                            <div class="member-avatar-box">
+                                <span id="avatarIcon">👤</span>
+                                <div class="halo-ring"></div>
+                            </div>
+                        </div>
+
+                        <!-- Details Grid -->
+                        <div class="card-details">
+                            <div class="detail-block">
+                                <span class="detail-label">ATHLETE NAME</span>
+                                <span id="passMemberName" class="detail-value">YOUR NAME</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <div class="detail-block">
+                                    <span class="detail-label">SEX</span>
+                                    <span id="passSexVal" class="detail-value-sm">--</span>
+                                </div>
+                                <div class="detail-block">
+                                    <span class="detail-label">EYE COLOR</span>
+                                    <span id="passEyeVal" class="detail-value-sm">Green</span>
+                                </div>
+                                <div class="detail-block">
+                                    <span class="detail-label">MEMBER ID</span>
+                                    <span id="passMemberId" class="detail-value-sm cyan-id">#IP-0000</span>
+                                </div>
+                            </div>
+
+                            <div class="detail-block margin-top-xs">
+                                <span class="detail-label">METRIC TRAITS</span>
+                                <span id="passTraitsVal" class="detail-value-sm trait-pill">None selected</span>
+                            </div>
+
+                            <!-- Athletic Profile Box -->
+                            <div class="plan-summary-card">
+                                <div class="summary-title" id="passPlanTitle">⚡ ATHLETIC DIAGNOSTIC PROFILE</div>
+                                <p class="summary-desc" id="passAthleticDesc">Provide a description in the form to populate your athletic profile.</p>
+                            </div>
+                        </div>
+
+                        <!-- Footer Barcode -->
+                        <div class="card-footer">
+                            <div class="barcode-wrapper">
+                                <div class="barcode">||||| | |||| || ||||| ||| ||||</div>
+                                <div class="laser-line"></div>
+                            </div>
+                            <span id="passStatusText" class="card-status">STATUS: PENDING</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Submission Feedback Banner -->
+                <div id="formResult" class="form-result"></div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

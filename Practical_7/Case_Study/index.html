@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="1960s Space-Age & Retro Comic Style Sign Up Page">
+    <title>Space-Age Telemetry | Account Initialization</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Syne:wght@600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- CRT Scanlines Overlay -->
+    <div class="crt-scanlines"></div>
+
+    <!-- Space-Age Vector Background Elements -->
+    <div class="space-age-bg">
+        <!-- Concentric Radar / Atomic Orbit Rings -->
+        <div class="atomic-orbit orbit-1"></div>
+        <div class="atomic-orbit orbit-2"></div>
+        <div class="radar-scope">
+            <div class="radar-line"></div>
+            <div class="radar-ring r-1"></div>
+            <div class="radar-ring r-2"></div>
+            <div class="radar-ring r-3"></div>
+        </div>
+        <!-- Abstract Retro Comic Color Blocks -->
+        <div class="retro-block block-orange"></div>
+        <div class="retro-block block-yellow"></div>
+        <div class="retro-block block-blue"></div>
+    </div>
+
+    <!-- Main Instrument Control Container -->
+    <main class="console-container">
+        <div class="control-panel">
+            <!-- Vintage Header / Telemetry Display -->
+            <header class="panel-header">
+                <div class="top-status-bar">
+                    <div class="status-indicator">
+                        <span class="status-light pulse-orange"></span>
+                        <span class="status-text">SYS.V-1965 // ATOMIC ACCESS</span>
+                    </div>
+                    <div class="space-badge">
+                        <i class="ri-rocket-fill"></i> PROJECT FOUR
+                    </div>
+                </div>
+
+                <div class="title-group">
+                    <div class="retro-insignia">
+                        <div class="atomic-ring"></div>
+                        <span class="insignia-number">4</span>
+                    </div>
+                    <div class="title-text">
+                        <h1 class="block-title">USER REGISTRATION</h1>
+                        <p class="terminal-sub">COMMAND CONSOLE PERSONNEL ENTRY SYSTEM</p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Sign Up Form -->
+            <form id="signup-form" novalidate>
+                <!-- Field 01: Full Name -->
+                <div class="form-group" id="group-fullname">
+                    <div class="label-row">
+                        <label for="fullname">
+                            <span class="field-num">01/</span> FULL NAME 
+                            <span class="required-star" title="Compulsory Field">*</span>
+                        </label>
+                        <span class="telemetry-tag">STR-CHAR</span>
+                    </div>
+                    <div class="input-panel">
+                        <i class="ri-user-star-line panel-icon"></i>
+                        <input type="text" id="fullname" name="fullname" placeholder="FIRST & LAST NAME" autocomplete="name">
+                        <span class="indicator-lamp"></span>
+                    </div>
+                    <span class="error-msg" id="error-fullname"></span>
+                </div>
+
+                <!-- Field 02: Username -->
+                <div class="form-group" id="group-username">
+                    <div class="label-row">
+                        <label for="username">
+                            <span class="field-num">02/</span> USERNAME 
+                            <span class="required-star" title="Compulsory Field">*</span>
+                        </label>
+                        <span class="telemetry-tag">ID-HANDLE</span>
+                    </div>
+                    <div class="input-panel">
+                        <i class="ri-shield-user-line panel-icon"></i>
+                        <input type="text" id="username" name="username" placeholder="CALLSIGN / HANDLE" autocomplete="username">
+                        <span class="indicator-lamp"></span>
+                    </div>
+                    <span class="error-msg" id="error-username"></span>
+                </div>
+
+                <!-- Field 03: Birthdate -->
+                <div class="form-group" id="group-birthdate">
+                    <div class="label-row">
+                        <label for="birthdate">
+                            <span class="field-num">03/</span> DATE OF BIRTH 
+                            <span class="required-star" title="Compulsory Field">*</span>
+                        </label>
+                        <span class="telemetry-tag">CHRONO-DATE</span>
+                    </div>
+                    <div class="input-panel">
+                        <i class="ri-calendar-line panel-icon"></i>
+                        <input type="date" id="birthdate" name="birthdate">
+                        <span class="indicator-lamp"></span>
+                    </div>
+                    <span class="error-msg" id="error-birthdate"></span>
+                </div>
+
+                <!-- Field 04: Email Address -->
+                <div class="form-group" id="group-email">
+                    <div class="label-row">
+                        <label for="email">
+                            <span class="field-num">04/</span> EMAIL ADDRESS 
+                            <span class="required-star" title="Compulsory Field">*</span>
+                        </label>
+                        <span class="telemetry-tag">COMMS-FREQ</span>
+                    </div>
+                    <div class="input-panel">
+                        <i class="ri-mail-send-line panel-icon"></i>
+                        <input type="email" id="email" name="email" placeholder="AGENT@ASTRO-COMMS.ORG" autocomplete="email">
+                        <span class="indicator-lamp"></span>
+                    </div>
+                    <span class="error-msg" id="error-email"></span>
+                </div>
+
+                <!-- Field 05: Password -->
+                <div class="form-group" id="group-password">
+                    <div class="label-row">
+                        <label for="password">
+                            <span class="field-num">05/</span> ACCESS CODE / PASSWORD 
+                            <span class="required-star" title="Compulsory Field">*</span>
+                        </label>
+                        <span class="telemetry-tag">CIPHER-KEY</span>
+                    </div>
+                    <div class="input-panel">
+                        <i class="ri-lock-line panel-icon"></i>
+                        <input type="password" id="password" name="password" placeholder="ENTER ACCESS CODE" autocomplete="new-password">
+                        <button type="button" class="toggle-password" id="toggle-pw" aria-label="Toggle Password Visibility">
+                            <i class="ri-eye-line" id="pw-icon"></i>
+                            <span class="toggle-text">VIEW</span>
+                        </button>
+                        <span class="indicator-lamp"></span>
+                    </div>
+                    <span class="error-msg" id="error-password"></span>
+                </div>
+
+                <!-- Compulsory Indicator Legend -->
+                <div class="legend-box">
+                    <span class="required-star">*</span> RED STAR INDICATES COMPULSORY ENTRY FIELDS
+                </div>
+
+                <!-- Launch Submit Button -->
+                <button type="submit" class="space-btn">
+                    <span class="btn-shine"></span>
+                    <span class="btn-label">INITIALIZE USER PROGRAM</span>
+                    <i class="ri-rocket-2-fill btn-rocket"></i>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal-card">
+            <div class="modal-top-strip">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="strip-title">SYSTEM STATUS: APPROVED</span>
+            </div>
+            <div class="modal-body">
+                <div class="retro-badge-large">
+                    <i class="ri-planet-line"></i>
+                </div>
+                <h2 class="modal-heading">CLEARANCE GRANTED!</h2>
+                <p class="modal-text">Personnel account successfully registered in central command directory.</p>
+
+                <div class="crt-terminal-summary">
+                    <div class="summary-line"><span>[01] PERSONNEL:</span> <strong id="summary-name"></strong></div>
+                    <div class="summary-line"><span>[02] CALLSIGN:</span> <strong id="summary-username"></strong></div>
+                    <div class="summary-line"><span>[03] COMMS ADDR:</span> <strong id="summary-email"></strong></div>
+                    <div class="summary-line"><span>[04] CHRONO DOB:</span> <strong id="summary-dob"></strong></div>
+                </div>
+
+                <button type="button" class="space-btn modal-btn" id="close-modal-btn">
+                    <span>DISMISS & RETURN</span>
+                    <i class="ri-arrow-right-line"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

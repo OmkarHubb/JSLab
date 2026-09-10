@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPER DHAMAKA BAZAAR // Indian Street Market</title>
+    <!-- Loud Indian Signboard Fonts: Yatra One, Kalam, Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Poppins:wght@600;800;900&family=Yatra+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Striped Shop Canopy Awning with Glowing Lights -->
+    <div class="shop-awning">
+        <div class="hanging-lights">
+            <span class="light-bulb yellow-bulb"></span>
+            <span class="light-bulb red-bulb"></span>
+            <span class="light-bulb green-bulb"></span>
+            <span class="light-bulb pink-bulb"></span>
+            <span class="light-bulb blue-bulb"></span>
+        </div>
+    </div>
+
+    <div class="bazaar-container">
+        
+        <!-- Marquee Slang Ticker Bar -->
+        <div class="slang-ticker-bar">
+            <div class="ticker-track">
+                <span class="ticker-item">📢 "Excuse me, brother !"</span>
+                <span class="ticker-item">🛍️ "Bhaiya, kitne ka?"</span>
+                <span class="ticker-item">💃 "Arre madam, best price!"</span>
+                <span class="ticker-item">💥 "Sasta maal, mast maal!"</span>
+                <span class="ticker-item">🤝 "Ghar ki baat hai madam!"</span>
+                <span class="ticker-item">⚡ "Sarojini special rate!"</span>
+            </div>
+        </div>
+
+        <!-- Bazaar Header -->
+        <header class="bazaar-header">
+            <div class="blinking-led-sign">
+                <span class="led-dot"></span>
+                <span>🛺 DELHI BAZAAR • SABSE SASTA, SABSE ACCHA! 🛺</span>
+                <span class="led-dot"></span>
+            </div>
+
+            <h1 class="bazaar-title">SUPER DHAMAKA <span class="pink-highlight">BAZAAR!</span></h1>
+            
+            <div class="header-badges">
+                <span class="bazaar-chip yellow-chip">"Lelo lelo!"</span>
+                <span class="bazaar-chip pink-chip">🔥 "Arre madam, cost price pe de raha hu!"</span>
+                <span class="bazaar-chip yellow-chip">"Last price?"</span>
+            </div>
+        </header>
+
+        <!-- Street Stall Control Counter / Filter Console -->
+        <div class="bazaar-stall-counter">
+            <form id="filterForm" class="bazaar-form">
+                
+                <!-- Search Box Module -->
+                <div class="stall-field">
+                    <label for="searchInput" class="stall-label">
+                        🔍 "BHAIYA, KITNE KA?" (SEARCH PRODUCT)
+                    </label>
+                    <div class="sticker-input-box">
+                        <span class="search-icon">🔎</span>
+                        <input type="text" id="searchInput" placeholder="Search e.g. Laptop, T-Shirt, Watch..." autocomplete="off">
+                    </div>
+                    <span id="errorMessage" class="error-message"></span>
+                </div>
+
+                <!-- Category Select Module -->
+                <div class="stall-field">
+                    <label for="categorySelect" class="stall-label">
+                        🎪 "SASTA MAAL, MAST MAAL!" (CATEGORY)
+                    </label>
+                    <div class="sticker-select-box">
+                        <select id="categorySelect">
+                            <option value="all">🎪 "LELO LELO!" (ALL CATEGORIES)</option>
+                            <option value="Electronics">⚡ ELECTRONICS DUKAAN</option>
+                            <option value="Clothing">👕 SAROJINI KAPDA MARKET</option>
+                            <option value="Books">📚 KITAB STALL</option>
+                            <option value="Accessories">🎒 FASHION ACCESSORIES</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Clear Filter Button -->
+                <div class="stall-action">
+                    <button type="button" id="clearBtn" class="clear-bazaar-btn">
+                        🧹 CLEAR FILTERS
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- Market Gallery -->
+        <section class="bazaar-market-section">
+            <div class="market-banner">
+                <span class="banner-text">👇 "ARRE MADAM, DEKHO LELO!" (STALL ITEMS) 👇</span>
+            </div>
+
+            <!-- Product Display Area -->
+            <div id="productList" class="chaotic-bazaar-grid"></div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
