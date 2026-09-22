@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple theme preference switcher with persistent local storage.">
+    <title>Theme Preference Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-decor">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <main class="container">
+        <header class="app-header">
+            <div class="badge">Practical 9</div>
+            <h1>Theme Preference Manager</h1>
+            <p>Select your preferred theme below. Your selection is automatically saved in <code>localStorage</code> and will persist across browser reloads.</p>
+        </header>
+
+        <section class="card action-card">
+            <h2>Choose Theme</h2>
+            <div class="button-group">
+                <button id="btn-light" class="btn btn-light" aria-label="Switch to Light Mode">
+                    <span class="icon">☀️</span>
+                    <span class="btn-text">Light Mode</span>
+                </button>
+                <button id="btn-dark" class="btn btn-dark" aria-label="Switch to Dark Mode">
+                    <span class="icon">🌙</span>
+                    <span class="btn-text">Dark Mode</span>
+                </button>
+                <button id="btn-clear" class="btn btn-clear" aria-label="Clear Theme Preference">
+                    <span class="icon">🗑️</span>
+                    <span class="btn-text">Clear Preference</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="card status-card">
+            <h2>Storage State</h2>
+            <div class="status-grid">
+                <div class="status-item">
+                    <span class="status-label">Active Theme:</span>
+                    <span id="active-theme-badge" class="badge-status">Light</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">localStorage Value:</span>
+                    <code id="storage-value" class="code-block">"light"</code>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Persistence Status:</span>
+                    <span id="persistence-status" class="status-indicator active">
+                        <span class="dot"></span> Saved in Browser Storage
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section class="card preview-card">
+            <h2>Component Preview</h2>
+            <p>This card demonstrates how UI components dynamically adapt their colors, borders, and shadows based on the active theme.</p>
+            <div class="preview-actions">
+                <input type="text" placeholder="Sample input field..." class="preview-input">
+                <button class="preview-btn">Sample Action</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Practical 9 &bull; Web Technology Lab &bull; JavaScript LocalStorage Demo</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

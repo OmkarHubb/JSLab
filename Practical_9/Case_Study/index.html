@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Student Info Header -->
+        <header class="student-info-bar">
+            <div class="student-detail">
+                <span class="label">Name:</span>
+                <span class="value">Omkar Pant</span>
+            </div>
+            <div class="student-detail">
+                <span class="label">PRN:</span>
+                <span class="value">25070521515</span>
+            </div>
+        </header>
+
+        <!-- Table Container -->
+        <main class="table-card">
+            <div class="table-responsive">
+                <table class="schedule-table" id="scheduleTable">
+                    <thead>
+                        <tr>
+                            <th rowspan="3" class="col-day">Day</th>
+                            <th colspan="3" class="col-seminar">Seminar</th>
+                        </tr>
+                        <tr>
+                            <th colspan="2" class="col-schedule">Schedule</th>
+                            <th rowspan="2" class="col-topic">Topic</th>
+                        </tr>
+                        <tr>
+                            <th class="col-begin">Begin</th>
+                            <th class="col-end">End</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleBody">
+                        <!-- Populated dynamically via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

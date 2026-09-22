@@ -1,0 +1,336 @@
+/* ==========================================================================
+   Practical Experiment No. 9: Seminar Schedule Planner
+   Styling with Light / Dark Theme Support & Formal Academic Record Appearance
+   ========================================================================== */
+
+/* CSS Variables for Color System & Theme Switching */
+:root {
+    --bg-color: #f4f6f9;
+    --card-bg: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: #cbd5e1;
+    --table-header-bg: #e2e8f0;
+    --table-border: #475569;
+    
+    /* Cell Specific Background Colors (Matching Practical Reference Image) */
+    --begin-bg: #fef08a; /* Soft yellowish tint for Begin column */
+    --begin-text: #713f12;
+    --end-bg: #bfdbfe;   /* Soft lavender/blue tint for End column */
+    --end-text: #1e3a8a;
+    --day-bg: #f8fafc;
+    --topic-bg: #ffffff;
+
+    --hover-bg: #e2e8f0;
+    --primary-accent: #2563eb;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    --session-card-bg: #eff6ff;
+    --session-card-border: #bfdbfe;
+    --session-text: #1e40af;
+}
+
+/* Dark Theme Variables */
+body.dark-theme {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+    --table-header-bg: #334155;
+    --table-border: #64748b;
+
+    --begin-bg: #423810;
+    --begin-text: #fef08a;
+    --end-bg: #1e3a5f;
+    --end-text: #bfdbfe;
+    --day-bg: #1e293b;
+    --topic-bg: #1e293b;
+
+    --hover-bg: #334155;
+    --primary-accent: #60a5fa;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+    --session-card-bg: #1e293b;
+    --session-card-border: #3b82f6;
+    --session-text: #93c5fd;
+}
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 24px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-container {
+    max-width: 850px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Student Info Bar */
+.student-info-bar {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+    font-size: 0.95rem;
+}
+
+.student-detail .label {
+    color: var(--text-secondary);
+    margin-right: 6px;
+    font-weight: 600;
+}
+
+.student-detail .value {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+/* Header Styles */
+.practical-header {
+    background-color: var(--card-bg);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+.header-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.badge {
+    background-color: var(--primary-accent);
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--table-header-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.main-title {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* SessionStorage Status Banner */
+.session-card {
+    background-color: var(--session-card-bg);
+    border: 1px solid var(--session-card-border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.session-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.session-card-header h2 {
+    font-size: 1.1rem;
+    color: var(--session-text);
+}
+
+.session-badge {
+    background-color: var(--session-text);
+    color: var(--card-bg);
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.session-subtext {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.session-display-box {
+    background-color: var(--card-bg);
+    border: 1px dashed var(--border-color);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.session-display-box .highlight {
+    font-weight: 700;
+    color: var(--primary-accent);
+}
+
+/* Table Container & Table Styles */
+.table-card {
+    background-color: var(--card-bg);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Schedule Table Layout matching the Practical Reference Image */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 1rem;
+    border: 1.5px solid #64748b;
+    text-align: center;
+}
+
+.schedule-table th,
+.schedule-table td {
+    border: 1.5px solid #64748b;
+    padding: 12px 16px;
+    vertical-align: middle;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.schedule-table th {
+    background-color: #e9eef4;
+    color: #1e293b;
+    font-weight: 700;
+}
+
+/* Column Header Styling */
+.col-day {
+    width: 20%;
+}
+
+.col-seminar {
+    width: 80%;
+}
+
+.col-schedule {
+    width: 40%;
+}
+
+.col-topic {
+    width: 40%;
+}
+
+.col-begin, .col-end {
+    width: 20%;
+}
+
+/* Cell Specific Background Styling matching Reference Image */
+.day-cell {
+    background-color: #ffffff;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.bg-yellow {
+    background-color: #fef08a !important;
+    color: #451a03;
+    font-weight: 500;
+}
+
+.bg-green {
+    background-color: #bbf7d0 !important;
+    color: #064e3b;
+    font-weight: 500;
+}
+
+.bg-purple {
+    background-color: #c6d2fe !important;
+    color: #1e1b4b;
+    font-weight: 500;
+}
+
+.topic-cell {
+    background-color: #ffffff;
+    color: #1e293b;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Clickable Row Styling */
+.event-row {
+    cursor: pointer;
+}
+
+.event-row:hover td {
+    filter: brightness(0.95);
+    outline: 2px solid var(--primary-accent);
+}
+
+body.dark-theme .event-row:hover td {
+    filter: brightness(1.2);
+}
+
+.table-instruction {
+    margin-top: 14px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+/* Footer */
+.practical-footer {
+    text-align: center;
+    padding: 12px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
