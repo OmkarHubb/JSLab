@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Order Manager — CanteenOS</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="dashboard">
+    <aside class="rail">
+      <div class="logo">c<span>.</span></div>
+      <div class="rail-label">KITCHEN<br>CONSOLE</div>
+      <div class="rail-bottom"><span class="rail-dot"></span><span>LOCAL<br>DEMO</span></div>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="overline">CANTEENOS / OPERATIONS</p>
+          <h1>Food Order Manager</h1>
+          <p class="subtitle">Manage orders, track progress, and keep service moving.</p>
+        </div>
+        <div class="top-actions">
+          <div class="date-chip"><span class="calendar-icon">▦</span><span id="todayDate">TODAY</span></div>
+          <button class="reset-button" id="resetDemo" type="button" title="Restore demo orders">↺ <span>Reset demo</span></button>
+        </div>
+      </header>
+
+      <section class="stats" aria-label="Order summary">
+        <article class="stat-card">
+          <div class="stat-icon purple">▤</div><div><span>Total orders</span><strong id="totalOrders">7</strong></div>
+          <small class="stat-foot">ALL RECORDS</small>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon amber">◷</div><div><span>In progress</span><strong id="activeOrders">3</strong></div>
+          <small class="stat-foot">PREPARING + READY</small>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon mint">₹</div><div><span>Total sales</span><strong id="totalSales">₹2,270</strong></div>
+          <small class="stat-foot">ORDER VALUE</small>
+        </article>
+      </section>
+
+      <div class="main-grid">
+        <section class="panel new-order-panel">
+          <div class="panel-heading">
+            <div class="heading-icon">＋</div>
+            <div><h2>Place new order</h2><p>Add a customer order to the queue.</p></div>
+          </div>
+          <form id="orderForm" novalidate>
+            <label class="form-field">
+              <span>Customer name</span>
+              <input id="customerName" name="customerName" type="text" placeholder="e.g. Aanya Sharma" required>
+              <small class="error" id="customerError"></small>
+            </label>
+            <div class="form-row">
+              <label class="form-field">
+                <span>Food item</span>
+                <input id="foodItem" name="foodItem" type="text" placeholder="e.g. Paneer wrap" required>
+                <small class="error" id="foodError"></small>
+              </label>
+              <label class="form-field">
+                <span>Quantity</span>
+                <input id="quantity" name="quantity" type="number" min="1" max="99" value="1" required>
+                <small class="error" id="quantityError"></small>
+              </label>
+            </div>
+            <div class="form-row">
+              <label class="form-field">
+                <span>Total amount (₹)</span>
+                <input id="amount" name="amount" type="number" min="1" step="1" placeholder="Enter total amount" required>
+                <small class="error" id="amountError"></small>
+              </label>
+              <label class="form-field">
+                <span>Order status</span>
+                <select id="status" name="status">
+                  <option value="Preparing">Preparing</option>
+                  <option value="Ready">Ready</option>
+                  <option value="Delivered">Delivered</option>
+                  <option value="Pending" selected>Pending</option>
+                </select>
+              </label>
+            </div>
+            <button class="primary-button" type="submit">＋ Place order <span>↗</span></button>
+            <p class="form-message" id="formMessage" role="status"></p>
+          </form>
+          <div class="tip"><span>✦</span><p><strong>Quick tip</strong> Use the status menu to keep the order board up to date.</p></div>
+        </section>
+
+        <section class="panel orders-panel">
+          <div class="orders-heading">
+            <div class="panel-heading">
+              <div class="heading-icon list-icon">▤</div>
+              <div><h2>Order details</h2><p>Recent orders at a glance.</p></div>
+            </div>
+            <div class="orders-tools">
+              <label class="search-box"><span>⌕</span><input id="searchOrders" type="search" placeholder="Search orders..." aria-label="Search orders"></label>
+              <select id="statusFilter" aria-label="Filter orders by status">
+                <option value="All">All statuses</option>
+                <option value="Pending">Pending</option>
+                <option value="Preparing">Preparing</option>
+                <option value="Ready">Ready</option>
+                <option value="Delivered">Delivered</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr>
+                <th>Order ID</th><th>Customer name</th><th>Food item</th><th>Qty.</th><th>Total</th><th>Status</th><th aria-label="Actions"></th>
+              </tr></thead>
+              <tbody id="ordersBody"></tbody>
+            </table>
+            <div class="empty-state" id="emptyState" hidden><span>⌕</span><strong>No orders found</strong><p>Try a different search or filter.</p></div>
+          </div>
+
+          <div class="table-footer">
+            <span id="showingCount">Showing 7 orders</span>
+            <div class="table-legend"><span><i class="dot pending"></i>Pending</span><span><i class="dot preparing"></i>Preparing</span><span><i class="dot delivered"></i>Completed</span></div>
+          </div>
+        </section>
+      </div>
+      <footer class="footer"><span>© 2026 CANTEENOS</span><span>MADE FOR SMOOTHER SERVICE <b>●</b></span></footer>
+    </section>
+  </main>
+</body>
+</html>

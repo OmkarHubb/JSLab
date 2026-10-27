@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: #f1f4f9;
+    color: #202b46;
+}
+
+.container {
+    width: 100%;
+    max-width: 430px;
+}
+
+h1 {
+    text-align: center;
+    color: #4338ca;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #7b8194;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: white;
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px #202b4612;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 16px 0 8px;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d8ddeb;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #4338ca;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    background: #4338ca;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #312e81;
+}
+
+button.reset {
+    margin-top: 8px;
+    background: #e9eaf4;
+    color: #303652;
+}
+
+.countdown {
+    margin-top: 25px;
+    padding: 22px 10px;
+    text-align: center;
+    background: #f5f4ff;
+    border-radius: 12px;
+}
+
+#status {
+    color: #777b94;
+    font-size: 13px;
+}
+
+#timer {
+    margin: 15px 0;
+    color: #4338ca;
+    font-size: 52px;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+}
+
+#displayClass {
+    font-size: 17px;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 20px;
+    }
+
+    #timer {
+        font-size: 44px;
+    }
+}

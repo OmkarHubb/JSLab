@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daylight — Weather</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+    <main class="app">
+        <nav class="navbar">
+            <div class="logo"><span>●</span> daylight.</div>
+            <span class="nav-note">WEATHER, SIMPLIFIED.</span>
+        </nav>
+
+        <section class="search-section">
+            <p class="label">YOUR LOCATION, YOUR FORECAST</p>
+            <form id="weatherForm">
+                <input type="text" id="cityInput" placeholder="Enter a city..." required>
+                <button type="submit">Search ↗</button>
+            </form>
+            <p id="message" aria-live="polite"></p>
+        </section>
+
+        <section class="weather">
+            <div class="weather-top">
+                <div>
+                    <p class="label">CURRENT WEATHER</p>
+                    <h1 id="city">Your City<span class="period">.</span></h1>
+                    <p id="description">A little look at the sky.</p>
+                </div>
+
+                <div class="sun-art" aria-hidden="true">
+                    <div class="sun"></div>
+                    <div class="sun-line"></div>
+                </div>
+            </div>
+
+            <div class="temperature" id="temperature">--°<span>C</span></div>
+            <p class="feels">FEELS LIKE <strong id="feelsLike">--°C</strong></p>
+        </section>
+
+        <section class="details">
+            <div class="detail">
+                <span>01 / HUMIDITY</span>
+                <strong id="humidity">--%</strong>
+            </div>
+            <div class="detail">
+                <span>02 / WIND SPEED</span>
+                <strong id="wind">-- km/h</strong>
+            </div>
+        </section>
+
+        <section class="recent-section">
+            <div class="recent-heading">
+                <p class="label">RECENTLY EXPLORED</p>
+                <span>↘</span>
+            </div>
+            <div id="recent">
+                <span class="empty">Your searches will appear here.</span>
+            </div>
+        </section>
+
+        <footer>
+            <span>DAYLIGHT © 2026</span>
+            <span>MADE FOR THE EVERYDAY.</span>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

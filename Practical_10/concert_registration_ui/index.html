@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Afterglow — Concert Registration</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <section class="event-panel" aria-label="Concert information">
+      <div class="brand"><span class="brand-mark">✳</span> AFTERGLOW<span class="brand-dot">.</span></div>
+      <div class="event-copy">
+        <p class="eyebrow">ONE NIGHT. ALL SOUND.</p>
+        <h1>Feel the<br><span>frequency.</span></h1>
+        <p class="intro">A live music experience made for the ones who stay until the last track.</p>
+      </div>
+      <div class="event-meta">
+        <div><span class="meta-label">WHEN</span><strong>Saturday, 14 Nov</strong></div>
+        <div><span class="meta-label">WHERE</span><strong>The Grand Arena · Pune</strong></div>
+      </div>
+      <div class="visualizer" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="side-note">LIVE MUSIC / 2026</div>
+    </section>
+
+    <section class="form-panel" aria-labelledby="form-title">
+      <header class="form-header">
+        <div>
+          <p class="eyebrow accent">YOUR NIGHT STARTS HERE</p>
+          <h2 id="form-title">Get on the list<span>.</span></h2>
+        </div>
+        <div class="step-badge"><span>01</span><small>REGISTRATION</small></div>
+      </header>
+
+      <form id="registrationForm" novalidate>
+        <div class="field-grid">
+          <label class="field">
+            <span>Full name</span>
+            <input type="text" id="fullName" name="fullName" placeholder="e.g. Alex Morgan" autocomplete="name" required>
+            <small class="error" id="nameError"></small>
+          </label>
+          <label class="field">
+            <span>Email address</span>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+            <small class="error" id="emailError"></small>
+          </label>
+          <label class="field">
+            <span>Phone number</span>
+            <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" autocomplete="tel" required>
+            <small class="error" id="phoneError"></small>
+          </label>
+          <label class="field">
+            <span>Ticket type</span>
+            <select id="ticket" name="ticket" required>
+              <option value="" disabled selected>Select your pass</option>
+              <option value="General Admission">General admission · ₹799</option>
+              <option value="Fan Pit">Fan pit · ₹1,499</option>
+              <option value="VIP Access">VIP access · ₹2,499</option>
+            </select>
+            <small class="error" id="ticketError"></small>
+          </label>
+        </div>
+
+        <fieldset class="payment-field">
+          <legend>Preferred payment method</legend>
+          <div class="payment-options">
+            <label class="payment-option">
+              <input type="radio" name="payment" value="UPI" checked>
+              <span class="radio-ui"></span><span class="payment-icon">↗</span><span>UPI</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="Credit / Debit Card">
+              <span class="radio-ui"></span><span class="payment-icon">▰</span><span>Card</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="Net Banking">
+              <span class="radio-ui"></span><span class="payment-icon">⌂</span><span>Net banking</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="preferences">
+          <label class="check-row">
+            <input type="checkbox" id="updates" name="updates">
+            <span class="check-ui"></span>
+            <span>Send me lineup updates and event announcements</span>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" id="terms" name="terms" required>
+            <span class="check-ui"></span>
+            <span>I agree to the <a href="#" id="termsLink">event terms</a> and registration policy</span>
+          </label>
+          <small class="error" id="termsError"></small>
+        </div>
+
+        <div class="form-footer">
+          <div class="secure-note"><span class="lock">⌑</span><span><strong>You're in safe hands</strong><small>Your details stay private and secure.</small></span></div>
+          <button type="submit">Complete registration <span aria-hidden="true">↗</span></button>
+        </div>
+      </form>
+      <p class="fine-print">By registering, you confirm that your details are correct.</p>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <div class="toast-check">✓</div>
+    <div><strong>You're on the list!</strong><p id="toastMessage">Your registration details have been received.</p></div>
+    <button type="button" id="closeToast" aria-label="Close confirmation">×</button>
+  </div>
+</body>
+</html>

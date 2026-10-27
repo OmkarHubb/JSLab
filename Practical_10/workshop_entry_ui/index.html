@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workshop Entry — Fieldnotes</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="sidebar">
+      <div class="identity">
+        <div class="identity-mark">F<span>.</span></div>
+        <div><strong>FIELDNOTES</strong><small>LEARNING LAB</small></div>
+      </div>
+
+      <div class="sidebar-copy">
+        <p class="kicker">LEARN BY MAKING</p>
+        <h1>Curiosity<br>has a <em>practice.</em></h1>
+        <p class="description">Small-group technical workshops built for people who like to understand how things work.</p>
+      </div>
+
+      <div class="session-card">
+        <div class="session-card-top"><span class="live-dot"></span> UPCOMING SESSIONS</div>
+        <div class="session-date"><strong>06</strong><span>NOV<br>2026</span></div>
+        <div class="session-rule"></div>
+        <p>Bring your questions.<br>Leave with new skills.</p>
+      </div>
+      <div class="sidebar-foot"><span>FIELDNOTES / 2026</span><span>01 — 04</span></div>
+    </aside>
+
+    <section class="content">
+      <header class="topbar">
+        <div class="breadcrumb"><span>WORKSHOPS</span><b>/</b><strong>ENTRY FORM</strong></div>
+        <span class="secure-tag"><span>✳</span> STUDENT REGISTRATION</span>
+      </header>
+
+      <div class="form-wrap">
+        <div class="heading-row">
+          <div>
+            <p class="kicker">YOUR NEXT SKILL STARTS HERE</p>
+            <h2>Workshop Entry</h2>
+            <p class="subheading">Secure your place in an upcoming technical session.</p>
+          </div>
+          <div class="progress-ring"><strong>01</strong><span>OF 01</span></div>
+        </div>
+
+        <form id="workshopForm" novalidate>
+          <div class="input-grid">
+            <label class="field">
+              <span class="field-number">01</span>
+              <span class="field-label">Full name</span>
+              <input id="fullName" name="fullName" type="text" placeholder="Enter your full name" autocomplete="name" required>
+              <small class="error" id="nameError"></small>
+            </label>
+            <label class="field">
+              <span class="field-number">02</span>
+              <span class="field-label">Student ID</span>
+              <input id="studentId" name="studentId" type="text" placeholder="e.g. STU202601" required>
+              <small class="error" id="studentError"></small>
+            </label>
+            <label class="field wide">
+              <span class="field-number">03</span>
+              <span class="field-label">Email address</span>
+              <input id="email" name="email" type="email" placeholder="name@college.edu" autocomplete="email" required>
+              <small class="error" id="emailError"></small>
+            </label>
+            <label class="field">
+              <span class="field-number">04</span>
+              <span class="field-label">Select workshop</span>
+              <select id="workshop" name="workshop" required>
+                <option value="" selected disabled>Choose a topic</option>
+                <option>Web Development</option>
+                <option>Artificial Intelligence</option>
+                <option>Cybersecurity Basics</option>
+                <option>Cloud Computing</option>
+                <option>Data Science</option>
+                <option>Internet of Things</option>
+              </select>
+              <small class="error" id="workshopError"></small>
+            </label>
+            <label class="field">
+              <span class="field-number">05</span>
+              <span class="field-label">Number of sessions</span>
+              <select id="sessions" name="sessions" required>
+                <option value="1">01 session</option>
+                <option value="2">02 sessions</option>
+                <option value="3">03 sessions</option>
+                <option value="4">04 sessions</option>
+              </select>
+              <small class="error" id="sessionsError"></small>
+            </label>
+          </div>
+
+          <div class="form-bottom">
+            <p class="form-note"><span class="note-icon">i</span><span>Check your details before booking. A session summary will appear after submission.</span></p>
+            <button type="submit">Book sessions <span aria-hidden="true">↗</span></button>
+          </div>
+        </form>
+        <footer class="page-footer"><span>FIELDNOTES LEARNING LAB</span><span>QUESTIONS MAKE BETTER BUILDERS.</span></footer>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="modalBackdrop" role="presentation">
+    <section class="confirmation" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <button type="button" class="modal-close" id="closeModal" aria-label="Close confirmation">×</button>
+      <div class="success-icon">✓</div>
+      <p class="kicker">REQUEST RECEIVED</p>
+      <h2 id="confirmTitle">You're on the roster.</h2>
+      <p class="confirm-intro">Here's a summary of your workshop booking.</p>
+      <div class="summary-list">
+        <div><span>PARTICIPANT</span><strong id="summaryName">—</strong></div>
+        <div><span>STUDENT ID</span><strong id="summaryStudent">—</strong></div>
+        <div><span>WORKSHOP</span><strong id="summaryWorkshop">—</strong></div>
+        <div><span>SESSIONS</span><strong id="summarySessions">—</strong></div>
+      </div>
+      <button type="button" class="done-button" id="doneButton">Back to form</button>
+      <small class="demo-note">Demo only — no booking data is sent to a server.</small>
+    </section>
+  </div>
+</body>
+</html>

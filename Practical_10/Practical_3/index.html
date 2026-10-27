@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myCity - Nagpur</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            font-family: 'Segoe UI', Georgia, system-ui, -apple-system, sans-serif;
+            /* Warm Beige pastel background */
+            background-color: #f4efe9;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-card {
+            width: 95%;
+            max-width: 960px;
+            height: 94vh;
+            /* Cream / Soft Beige Container */
+            background-color: #faf7f2;
+            border: 2px solid #e6ded4;
+            border-radius: 20px;
+            padding: 24px 30px;
+            box-shadow: 0 12px 35px rgba(100, 80, 60, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Warm Beige Marquee Box */
+        .marquee-box {
+            background-color: #efe7dd;
+            border: 1px solid #dfd4c4;
+            color: #5a4a3a;
+            border-radius: 10px;
+            padding: 8px 16px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        marquee {
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        /* 
+           Specification 1: Place your City name at the top of the page in large text and in blue color
+        */
+        .city-header {
+            text-align: center;
+            margin: 8px 0 12px 0;
+        }
+
+        .city-badge {
+            display: inline-block;
+            background-color: #eaddcf;
+            color: #745e4d;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 3px 12px;
+            border-radius: 12px;
+            margin-bottom: 4px;
+        }
+
+        .city-title {
+            color: blue;
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .city-subtitle {
+            color: #718096;
+            font-size: 14px;
+            font-style: italic;
+            margin-top: 2px;
+        }
+
+        .header-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #dfd4c4, transparent);
+            margin: 10px 0 14px 0;
+        }
+
+        .grid-heading {
+            font-size: 15px;
+            font-weight: 700;
+            color: #4a5568;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .grid-heading span.badge {
+            font-size: 11px;
+            background-color: #efe7dd;
+            color: #745e4d;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        /* 2-Column Balanced Grid Layout (Fills the screen comfortably in 1 view) */
+        .landmarks-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            flex: 1;
+        }
+
+        .landmark-card {
+            background-color: #f5f0e8;
+            border: 1px solid #e4dacd;
+            border-radius: 12px;
+            padding: 14px 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .card-details {
+            font-size: 12px;
+            color: #615649;
+            margin-top: 6px;
+            line-height: 1.4;
+        }
+
+        .card-tags {
+            margin-top: 8px;
+            display: flex;
+            gap: 6px;
+        }
+
+        .tag {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /* 
+           Specification 2: Add names of landmarks in your city each in a different color, style and typeface
+        */
+
+        /* Landmark 1: Deekshabhoomi */
+        .card-1 { background-color: #fcf4f4; border-color: #ebd3d3; }
+        .landmark-1 {
+            color: #c53030; /* Crimson Red */
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .tag-1 { background-color: #f7e2e2; color: #9b2c2c; }
+
+        /* Landmark 2: Futala Lake */
+        .card-2 { background-color: #f2f9f5; border-color: #d1e8da; }
+        .landmark-2 {
+            color: #2f855a; /* Emerald Green */
+            font-family: 'Trebuchet MS', sans-serif;
+            font-style: normal;
+            font-size: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .tag-2 { background-color: #dcfce7; color: #22543d; }
+
+        /* Landmark 3: Sitabuldi Fort */
+        .card-3 { background-color: #fdf7f2; border-color: #f7e2d2; }
+        .landmark-3 {
+            color: #c05621; /* Dark Orange */
+            font-family: 'Impact', fantasy;
+            font-style: oblique;
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+        .tag-3 { background-color: #feebc8; color: #7b341e; }
+
+        /* Landmark 4: Zero Mile Stone */
+        .card-4 { background-color: #f8f5fd; border-color: #e5d8f6; }
+        .landmark-4 {
+            color: #6b46c1; /* Purple */
+            font-family: 'Courier New', monospace;
+            font-style: italic;
+            font-size: 19px;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+        .tag-4 { background-color: #e9d8fd; color: #44337a; }
+
+        /* Landmark 5: Raman Science Centre */
+        .card-5 { background-color: #f2f9f9; border-color: #d0e8e8; }
+        .landmark-5 {
+            color: #2c7a7b; /* Teal */
+            font-family: 'Palatino Linotype', serif;
+            font-variant: small-caps;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .tag-5 { background-color: #e6fffa; color: #234e52; }
+
+        /* 
+           Specification 3: One of the landmark, your college name should be BLINKING
+        */
+        .card-college {
+            background-color: #fff3f3;
+            border: 1.5px solid #fbb6ce;
+        }
+
+        .landmark-college {
+            color: #9b2c2c; /* Rose Red */
+            font-family: 'Verdana', sans-serif;
+            font-size: 19px;
+            font-weight: 900;
+            text-transform: uppercase;
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            0% { opacity: 1.0; }
+            50% { opacity: 0.0; }
+            100% { opacity: 1.0; }
+        }
+
+        .tag-college { background-color: #fed7e2; color: #702459; }
+
+        footer {
+            text-align: center;
+            color: #8c7e70;
+            font-size: 12px;
+            margin-top: 12px;
+            padding-top: 8px;
+            border-top: 1px solid #e8dfd5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-card">
+
+        <!-- Specification 4: Add scrolling text with a message of your choice -->
+        <div class="marquee-box">
+            <marquee behavior="scroll" direction="left" scrollamount="5">
+                🍊 Welcome to Nagpur - The Orange City of India! Home to historic monuments, serene lakes, lush parks, and premier educational hubs. 🍊
+            </marquee>
+        </div>
+
+        <!-- Specification 1: Place your City name at the top of the page in large text and in blue color -->
+        <div class="city-header">
+            <span class="city-badge">GEOGRAPHICAL CENTER OF INDIA</span>
+            <h1 class="city-title">
+                <font color="blue" size="7">NAGPUR</font>
+            </h1>
+            <p class="city-subtitle">The Orange City & Cultural Heritage of Maharashtra</p>
+        </div>
+
+        <div class="header-divider"></div>
+
+        <div class="grid-heading">
+            <span>Famous Landmarks of Nagpur:</span>
+            <span class="badge">6 Landmarks • Distinct Fonts & Colors</span>
+        </div>
+
+        <!-- Specification 2 & 3: 6 Landmark Cards (Fills screen nicely, 2-column grid, no scroll) -->
+        <div class="landmarks-grid">
+
+            <!-- Landmark 1 -->
+            <div class="landmark-card card-1">
+                <div>
+                    <div class="landmark-1">
+                        <font color="#c53030" face="Georgia">1. Deekshabhoomi</font>
+                    </div>
+                    <div class="card-details">
+                        A sacred monument of Navayana Buddhism where Dr. B. R. Ambedkar embraced Buddhism with thousands of followers.
+                    </div>
+                </div>
+                <div class="card-tags">
+                    <span class="tag tag-1">Georgia</span>
+                    <span class="tag tag-1">Crimson Red</span>
+                    <span class="tag tag-1">Italic Bold</span>
+                </div>
+            </div>
+
+            <!-- Landmark 2 -->
+            <div class="landmark-card card-2">
+                <div>
+                    <div class="landmark-2">
+                        <font color="#2f855a" face="Trebuchet MS">2. Futala Lake</font>
+                    </div>
+                    <div class="card-details">
+                        Famous historic lake built by the Bhonsle kings, renowned for its illuminated musical fountains and scenic sunset views.
+                    </div>
+                </div>
+                <div class="card-tags">
+                    <span class="tag tag-2">Trebuchet MS</span>
+                    <span class="tag tag-2">Emerald Green</span>
+                    <span class="tag tag-2">Bold Uppercase</span>
+                </div>
+            </div>
+
+            <!-- Landmark 3 -->
+            <div class="landmark-card card-3">
+                <div>
+                    <div class="landmark-3">
+                        <font color="#c05621" face="Impact">3. Sitabuldi Fort</font>
+                    </div>
+                    <div class="card-details">
+                        Historic hillfort situated in central Nagpur, famous for the battle fought during the Third Anglo-Maratha War.
+                    </div>
+                </div>
+                <div class="card-tags">
+                    <span class="tag tag-3">Impact</span>
+                    <span class="tag tag-3">Dark Orange</span>
+                    <span class="tag tag-3">Oblique</span>
+                </div>
+            </div>
+
+            <!-- Landmark 4 -->
+            <div class="landmark-card card-4">
+                <div>
+                    <div class="landmark-4">
+                        <font color="#6b46c1" face="Courier New">4. Zero Mile Stone</font>
+                    </div>
+                    <div class="card-details">
+                        Historical monument erected during the Great Trigonometrical Survey identifying the exact central point of India.
+                    </div>
+                </div>
+                <div class="card-tags">
+                    <span class="tag tag-4">Courier New</span>
+                    <span class="tag tag-4">Purple</span>
+                    <span class="tag tag-4">Underlined Italic</span>
+                </div>
+            </div>
+
+            <!-- Landmark 5 -->
+            <div class="landmark-card card-5">
+                <div>
+                    <div class="landmark-5">
+                        <font color="#2c7a7b" face="Palatino Linotype">5. Raman Science Centre</font>
+                    </div>
+                    <div class="card-details">
+                        Interactive science center affiliated with Mumbai's Nehru Science Centre, named after Nobel laureate Sir C. V. Raman.
+                    </div>
+                </div>
+                <div class="card-tags">
+                    <span class="tag tag-5">Palatino Linotype</span>
+                    <span class="tag tag-5">Teal</span>
+                    <span class="tag tag-5">Small-Caps</span>
+                </div>
+            </div>
+
+            <!-- Landmark 6: College Name (Blinking Specification) -->
+            <div class="landmark-card card-college">
+                <div>
+                    <div class="landmark-college">
+                        <blink><font color="#9b2c2c" face="Verdana">6. SIT Nagpur (College)</font></blink>
+                    </div>
+                    <div class="card-details" style="color: #9b2c2c; font-weight: 600;">
+                        Symbiosis Institute of Technology, Nagpur (Mandatory Blinking Landmark Specification).
+                    </div>
+                </div>
+                <div class="card-tags">
+                    <span class="tag tag-college">⚡ Blinking Landmark</span>
+                    <span class="tag tag-college">Verdana</span>
+                    <span class="tag tag-college">Rose Red</span>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            Practical Assignment 3 - Question 3: myCity (Nagpur) Web Page Implementation
+        </footer>
+
+    </div>
+
+</body>
+</html>
